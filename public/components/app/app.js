@@ -6,7 +6,7 @@
     let repository = new SessionStorageRepository();
 
     /* SOCKET IO для обмена данных с сервером */
-    const URL = "https://109.111.177.150:34000";
+    const URL = "http://109.111.177.150:34000";
 
     let socketIORepository = new SocketIORepository(
         {urlString: URL, deviceRepository: repository,});

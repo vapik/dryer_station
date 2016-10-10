@@ -6,12 +6,12 @@ let path = require('path');
 let config = require('config');
 
 let app = express();
-var http = require('https').Server(app);
+var http = require('http').Server(app);
 
 // Создаем socket IO над http
 let io = require('socket.io')(http);
 io.listen(http);
-io.set('origins', 'github.com:*');
+//io.set('origins', 'github.com:*');
 
 let PORT = config.get('port') || 34000;
 
