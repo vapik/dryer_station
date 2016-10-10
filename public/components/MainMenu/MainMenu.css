@@ -1,0 +1,5 @@
+.main-menu-list__main:hover,
+.main-menu-list__setting:hover
+{
+    cursor: pointer;
+}

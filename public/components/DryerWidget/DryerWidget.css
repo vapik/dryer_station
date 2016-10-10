@@ -1,0 +1,68 @@
+.dryer
+{
+    max-width: 520px;
+    min-width: 520px;
+    cursor: pointer;
+
+}
+
+.dryer-header_stopped,
+.dryer-footer_stopped
+{
+    background-color: lightgrey;
+
+
+}
+
+.dryer-header_dew-point-mode,
+.dryer-header_time-mode,
+.dryer-footer_dew-point-mode,
+.dryer-footer_time-mode
+{
+    background-color: limegreen;
+    color: #fff;
+}
+
+.dryer-header_step-mode,
+.dryer-header_hand-mode,
+.dryer-footer_step-mode,
+.dryer-footer_hand-mode
+{
+    background-color: orange;
+}
+
+.dryer-content-tank_off
+{
+    background-color: lightgrey;
+}
+
+.dryer-content-tank_switch,
+.dryer-content-tank_standby
+{
+    background-color: lightgrey;
+}
+
+.dryer-content-tank_adsorption
+{
+    background-color: lime;
+}
+
+.dryer-content-tank_pdown,
+.dryer-content-tank_pup,
+.dryer-content-tank_cool-fan,
+.dryer-content-tank_cool-air
+{
+    background-color: deepskyblue;
+}
+
+.dryer-content-tank_heat1,
+.dryer-content-tank_heat2
+{
+    background-color: orange;
+}
+
+.dryer-content-tank1,
+.dryer-content-tank2
+{
+    max-width: 140px;
+}
