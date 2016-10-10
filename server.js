@@ -6,7 +6,7 @@ let path = require('path');
 let config = require('config');
 
 let app = express();
-var http = require('http').Server(app);
+var http = require('https').Server(app);
 
 // Создаем socket IO над http
 let io = require('socket.io')(http);
