@@ -1,0 +1,20 @@
+{
+  "name": "dryer_station",
+  "version": "1.0.0",
+  "description": "Learn project for learn.javascript.ru",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vapik/dryer_station.git"
+  },
+  "keywords": [],
+  "author": "Anatoly V <anatoly.veshtemov@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vapik/dryer_station/issues"
+  },
+  "homepage": "https://github.com/vapik/dryer_station#readme"
+}
