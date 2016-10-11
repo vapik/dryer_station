@@ -11,7 +11,7 @@ var http = require('http').Server(app);
 // Создаем socket IO над http
 let io = require('socket.io')(http);
 io.listen(http);
-//io.set('origins', 'github.com:*');
+
 
 let PORT = config.get('port') || 34000;
 

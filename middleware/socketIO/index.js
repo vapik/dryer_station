@@ -112,12 +112,11 @@ module.exports = function(io) {
     };
 
     let deviceDataList = [deviceData1, deviceData2, deviceData3, deviceData4];
-
+    
     io.on('connection', function (socket) {
 
         console.log('Received connection');
-        console.log(socket);
-
+        
         socket.on('requestDeviceData', function (data) {
 
             console.log('requestDeviceData');

@@ -20,7 +20,8 @@
          */
         _init() {
             // Создаем сокет
-            this._socket = io.connect(this._urlString,{transports: ['websocket', 'flashsocket', 'xhr-polling']});
+            
+            this._socket = io.connect(this._urlString);
 
             if (this._socket == null) throw new Error("Can't create socket");
 
@@ -28,16 +29,16 @@
             this._sendRequestToServer(this._socket, this._deviceRepository, 1000);
 
             // Подписываемся на событие 'data', которое присылает данные с сервера
-            let context = this;
+            let self = this;
             this._socket.on('data', function (data) {
 
-                context._deviceDataList = [];
+                self._deviceDataList = [];
                 for (let i = 0; i < data.length; i++) {
-                    context._deviceDataList.push(data[i]);
+                    self._deviceDataList.push(data[i]);
                 }
 
                 // Отправляем запрос на сервер
-                context._sendRequestToServer(context._socket, context._deviceRepository, 1000);
+                self._sendRequestToServer(self._socket, self._deviceRepository, 3000);
 
             })
 
@@ -54,6 +55,7 @@
                 console.log('Send request to server');
                 // В запрос попадут только те агрегаты, которые включены в опрос
                 socket.emit('requestDeviceData', devList.filter((item) => item.state));
+                
             }, period);
         }
 
