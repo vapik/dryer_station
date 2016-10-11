@@ -1,0 +1,103 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="data">
+
+
+    <fest:comment>Name device</fest:comment>
+    <header class="dryer-header w3-container {data.style.headerStyleMode}">
+        <h4 class="dryer-header__name">
+            <fest:value>data.item.name</fest:value>
+        </h4>
+        <p class="w3-small w3-text-black">Данные за:<fest:space/>
+            <span class="dryer-header__timestamp">
+                <fest:value>data.item.ts</fest:value>
+            </span>
+        </p>
+    </header>
+
+    <fest:comment>Content</fest:comment>
+    <div class="dryer-content w3-row w3-margin">
+
+        <fest:comment>Tank1</fest:comment>
+        <div class="dryer-content-tank1 w3-col m4 {data.style.styleStateTank1} w3-round-large">
+            <ul class="dryer-content-tank1-board w3-ul">
+                <li class="dryer-content-tank1-board__name">
+                    Колонна 1
+                </li>
+                <li class="dryer-content-tank1-board__state">
+                    <fest:value>data.item.stateTank1</fest:value>
+                </li>
+                <li class="dryer-content-tank1-board__timer">
+                    <fest:value>data.item.timerTank1</fest:value>
+                </li>
+            </ul>
+        </div>
+
+        <fest:comment>Sensors</fest:comment>
+        <div class="dryer-content-sensors w3-col m4 w3-margin-left w3-margin-right w3-border w3-light-grey">
+            <ul class="dryer-content-sensors-board w3-ul w3-small">
+                <li>Точка росы:<fest:space/>
+                    <span
+                            class="dryer-content-sensors-board__dew-point w3-text-blue">
+                        <fest:value>data.item.dewPoint</fest:value><fest:space/>
+                        C
+                    </span>
+                </li>
+                <li>t сброс:<fest:space/>
+                    <span
+                            class="dryer-content-sensors-board__t-out w3-text-blue">&#160;
+                         <fest:value>data.item.tOut</fest:value><fest:space/>
+                        С
+                    </span>
+                </li>
+                <li>t нагрев.:<fest:space/>
+                    <span
+                            class="dryer-content-sensors-board-dew-point__t-after  w3-text-blue">
+                         <fest:value>data.item.tAfter</fest:value><fest:space/>
+                        С
+                    </span>
+                </li>
+                <li>P сброс:<fest:space/>
+                    <span
+                            class="dryer-content-sensors-board__p-out w3-text-blue">
+                         <fest:value>data.item.pOut</fest:value><fest:space/>
+                        кПа
+                    </span>
+                </li>
+                <li>Нагреватель:<fest:space/>
+                    <span
+                            class="dryer-content-sensors-board__heater w3-text-black">
+                         <fest:value>data.item.heater</fest:value>
+                    </span>
+                </li>
+                <li>Нагнетатель:<fest:space/>
+                    <span
+                            class="dryer-content-sensors-board__fan w3-text-black">
+                         <fest:value>data.item.fan</fest:value>
+                    </span>
+                </li>
+            </ul>
+        </div>
+
+        <fest:comment>Tank2</fest:comment>
+        <div class="dryer-content-tank2 w3-col m4 {data.style.styleStateTank2} w3-round-large">
+            <ul class="dryer-content-tank2-board w3-ul">
+                <li class="dryer-content-tank2-board__name">
+                    Колонна 2
+                </li>
+                <li class="dryer-content-tank2-board__state">
+                    <fest:value>data.item.stateTank2</fest:value>
+                </li>
+                <li class="dryer-content-tank2-board__timer">
+                    <fest:value>data.item.timerTank2</fest:value>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <fest:comment>Device mode</fest:comment>
+    <footer class="dryer-footer w3-container {data.style.footerStyleMode}">
+        <h5 class="dryer-footer__mode">
+            <fest:value>data.item.mode</fest:value>
+        </h5>
+    </footer>
+
+</fest:template>

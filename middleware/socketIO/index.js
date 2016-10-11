@@ -116,6 +116,7 @@ module.exports = function(io) {
     io.on('connection', function (socket) {
 
         console.log('Received connection');
+        console.log(socket);
 
         socket.on('requestDeviceData', function (data) {
 

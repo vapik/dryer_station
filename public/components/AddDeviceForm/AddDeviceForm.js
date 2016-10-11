@@ -2,6 +2,9 @@
 
     "use strict";
 
+    // import
+    let _template = window.fest['AddDeviceForm/AddDeviceForm.tmpl'];
+
     class AddDeviceForm {
         constructor(option) {
 
@@ -19,7 +22,7 @@
 
             /*TODO: НАДО ПЕРЕПИСАТЬ ЧЕРЕЗ ШАБЛОНИЗАТОР*/
 
-            this._el.innerHTML = `
+/*            this._el.innerHTML = `
             <form class="add-device-form w3-right w3-border w3-light-grey">
                 <input class="add-device-form__input"
                    type="text"
@@ -40,7 +43,9 @@
                 <button class="add-device-form__button-add w3-btn w3-green"
                     type="submit">Добавить
                 </button>
-            </form> `;
+            </form> `;*/
+
+            this._el.innerHTML = _template();
 
         }
 

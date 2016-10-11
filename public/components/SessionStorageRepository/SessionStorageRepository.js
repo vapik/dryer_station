@@ -80,7 +80,7 @@
                 for (let i = 0; i <= this._MAX_ID; i++) {
                     let itemJSON = this._repository.getItem(this._dbPrefix + i);
                     if (itemJSON) {
-                        devList[i] = JSON.parse(itemJSON);
+                        devList.push(JSON.parse(itemJSON));
                     }
                 }
             } catch (err)

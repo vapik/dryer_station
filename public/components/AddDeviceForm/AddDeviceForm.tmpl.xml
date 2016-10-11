@@ -1,23 +1,23 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="data">
     <form class="add-device-form w3-right w3-border w3-light-grey">
         <input class="add-device-form__input"
-           type="text"
-           required="required"
-           placeholder="Name"
-           name="name"/>
+               type="text"
+               required="required"
+               placeholder="Name"
+               name="name"/>
         <input class="add-device-form__input"
-           type="text"
-           required="required"
-           placeholder="IP"
-           name="ip"/>
+               type="text"
+               required="required"
+               placeholder="IP"
+               name="ip"/>
         <input class="add-device-form__input"
-           type="number"
-           required="required"
-           placeholder="ID"
-           size="3"
-           name="idDev"/>
+               type="number"
+               required="required"
+               placeholder="ID"
+               size="3"
+               name="idDev"/>
         <button class="add-device-form__button-add w3-btn w3-green"
-            type="submit">Добавить
+                type="submit">Добавить
         </button>
-</form>
+    </form>
 </fest:template>

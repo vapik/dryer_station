@@ -1,0 +1,38 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="item">
+    <td class="setting-devices-table__id">
+        <fest:value>item.id</fest:value></td>
+    <td colspan="5">
+        <form class="setting-devices-table-form">
+            <input class="settings-devices-table-form__input"
+                   type="hidden"
+                   name="id"
+                   value="{item.id}"/>
+            <input class="setting-devices-table-form__input"
+                   type="text"
+                   required="required"
+                   placeholder="Name"
+                   name="name"
+                   value="{item.name}"/>
+            <input class="setting-devices-table-form__input"
+                   type="text"
+                   required="required"
+                   placeholder="IP"
+                   name="ip"
+                   value="{item.ip}"/>
+            <input class="setting-devices-table-form__input"
+                   type="number"
+                   required="required"
+                   placeholder="ID"
+                   size="3"
+                   name="idDev"
+                   value="{item.idDev}"/>
+            <button class="setting-devices-table-form__button-apply w3-btn w3-green"
+                    type="button">Изменить
+            </button>
+            <button class="setting-devices-table-form__button-cancel w3-btn w3-orange"
+                    type="button">Отменить
+            </button>
+        </form>
+    </td>
+
+</fest:template>
