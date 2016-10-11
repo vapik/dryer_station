@@ -6,3 +6,4 @@ Client-side файлы находятся в директории public, все
 
 Пока не получается опрашивать данные с web-сервера gh-pages на домашний сервер.
 https://vapik.github.io/dryer_station/public/
+dafasdfas
