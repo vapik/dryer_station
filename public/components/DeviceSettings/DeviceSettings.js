@@ -20,19 +20,10 @@
 
         render() {
 
-
-            // let devList = this._repository.getDeviceList()
-            //     .map((item) => {
-            //         if (item.state)
-            //         {
-            //             item.state = "Да";
-            //         } else {
-            //             item.state = "Нет";
-            //         }
-            //
-            //     });
-
             let devList = this._repository.getDeviceList();
+            devList.forEach((item) => {
+                if(item) item.state = item.state? "Да" : "Нет";
+            });
 
             this._el.innerHTML = _template(devList);
         }

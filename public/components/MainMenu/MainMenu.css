@@ -1,13 +1,27 @@
+.main-menu-list
+{
+    color: #6FBEF3;
+    padding: 0.8em;
+}
+
 .main-menu-list__main,
 .main-menu-list__setting
 {
-    color: white;
+    /*color: #7f8c8d;*/
+    /*color: lightgrey;*/
+    padding: 0.8em;
+
 }
 
 .main-menu-list__main:hover,
 .main-menu-list__setting:hover
 {
     cursor: pointer;
-    color: black;
+    color: #7f8c8d;
 }
 
+.menu-selected
+{
+
+    color: white;
+}
