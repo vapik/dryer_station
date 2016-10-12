@@ -1,0 +1,16 @@
+.setting-devices-table-form__button-apply,
+.setting-devices-table-form__button-cancel {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.setting-devices-table-form__button-apply {
+    background: rgb(28, 184, 65); /* this is a green */
+}
+
+.setting-devices-table-form__button-cancel {
+    background: rgb(223, 117, 20); /* this is an orange */
+}

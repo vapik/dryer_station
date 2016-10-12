@@ -1,0 +1,11 @@
+.add-device-form
+{
+    /*margin-left: auto;*/
+    float: right;
+    margin-top: 4px;
+}
+
+.add-device-form__button-add
+{
+    margin-left: 4px;
+}

@@ -51,9 +51,9 @@ class MainMenu {
 
     render() {
         this._el.innerHTML = `
-            <ul class="main-menu-list w3-navbar w3-black">
-                <li><a class="main-menu-list__main tablink">Главное окно</a></li>
-                <li><a class="main-menu-list__setting tablink">Настройки</a></li>
+            <ul class="main-menu-list pure-menu-list">
+                <li class="pure-menu-item"><a class="main-menu-list__main pure-menu-link">Главное окно</a></li>
+                <li class="pure-menu-item"><a class="main-menu-list__setting pure-menu-link">Настройки</a></li>
             </ul>`;
     }
 

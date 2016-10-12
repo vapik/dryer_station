@@ -1,5 +1,6 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="data">
-<table class="setting-devices-table w3-table-all">
+<table class="setting-devices-table pure-table">
+    <thead>
     <tr>
         <th>ID</th>
         <th>Нименование</th>
@@ -8,10 +9,11 @@
         <th>Опрашивать</th>
         <th></th>
     </tr>
+    </thead>
 
     <fest:for iterate="data" index="index" value="item">
 
-        <tr data-id="{item.id}">
+        <tr class="setting-devices-row" data-id="{item.id}">
             <td class="setting-devices-table__id">
                 <fest:value>item.id</fest:value></td>
             <td class="setting-devices-table__name">
@@ -23,9 +25,9 @@
             <td class="setting-devices-table__state">
                 <fest:value>item.state</fest:value></td>
             <td class="setting-devices-table__buttons w3-center">
-                <button class="setting-devices-table-buttons__connect w3-btn w3-green">Подключить</button>
-                <button class="setting-devices-table-buttons__edit w3-btn w3-orange">Изменить</button>
-                <button class="setting-devices-table-buttons__delete w3-btn w3-red">Удалить</button>
+                <button class="setting-devices-table-buttons__connect pure-button">Подключить</button><fest:space/>
+                <button class="setting-devices-table-buttons__edit pure-button">Изменить</button><fest:space/>
+                <button class="setting-devices-table-buttons__delete pure-button">Удалить</button><fest:space/>
             </td>
         </tr>
 

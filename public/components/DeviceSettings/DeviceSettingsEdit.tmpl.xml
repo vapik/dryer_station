@@ -2,7 +2,7 @@
     <td class="setting-devices-table__id">
         <fest:value>item.id</fest:value></td>
     <td colspan="5">
-        <form class="setting-devices-table-form">
+        <form class="setting-devices-table-form pure-form">
             <input class="settings-devices-table-form__input"
                    type="hidden"
                    name="id"
@@ -26,10 +26,10 @@
                    size="3"
                    name="idDev"
                    value="{item.idDev}"/>
-            <button class="setting-devices-table-form__button-apply w3-btn w3-green"
+            <button class="setting-devices-table-form__button-apply pure-button"
                     type="button">Изменить
             </button>
-            <button class="setting-devices-table-form__button-cancel w3-btn w3-orange"
+            <button class="setting-devices-table-form__button-cancel pure-button"
                     type="button">Отменить
             </button>
         </form>

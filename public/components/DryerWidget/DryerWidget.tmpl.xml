@@ -2,7 +2,7 @@
 
 
     <fest:comment>Name device</fest:comment>
-    <header class="dryer-header w3-container {data.style.headerStyleMode}">
+    <header class="dryer-header {data.style.headerStyleMode}">
         <h4 class="dryer-header__name">
             <fest:value>data.item.name</fest:value>
         </h4>
@@ -14,11 +14,11 @@
     </header>
 
     <fest:comment>Content</fest:comment>
-    <div class="dryer-content w3-row w3-margin">
+    <div class="dryer-content pure-g">
 
         <fest:comment>Tank1</fest:comment>
-        <div class="dryer-content-tank1 w3-col m4 {data.style.styleStateTank1} w3-round-large">
-            <ul class="dryer-content-tank1-board w3-ul">
+        <div class="dryer-content-tank1 {data.style.styleStateTank1}  pure-u-1-3">
+            <ul class="dryer-content-tank1-board">
                 <li class="dryer-content-tank1-board__name">
                     Колонна 1
                 </li>
@@ -32,8 +32,8 @@
         </div>
 
         <fest:comment>Sensors</fest:comment>
-        <div class="dryer-content-sensors w3-col m4 w3-margin-left w3-margin-right w3-border w3-light-grey">
-            <ul class="dryer-content-sensors-board w3-ul w3-small">
+        <div class="dryer-content-sensors pure-u-1-3">
+            <ul class="dryer-content-sensors-board">
                 <li>Точка росы:<fest:space/>
                     <span
                             class="dryer-content-sensors-board__dew-point w3-text-blue">
@@ -78,7 +78,7 @@
         </div>
 
         <fest:comment>Tank2</fest:comment>
-        <div class="dryer-content-tank2 w3-col m4 {data.style.styleStateTank2} w3-round-large">
+        <div class="dryer-content-tank2 {data.style.styleStateTank2} pure-u-1-3">
             <ul class="dryer-content-tank2-board w3-ul">
                 <li class="dryer-content-tank2-board__name">
                     Колонна 2

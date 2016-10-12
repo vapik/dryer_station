@@ -109,7 +109,7 @@
 
             let deviceContainer = document.createElement('div');
             deviceContainer.className =
-                "dryer w3-col w3-card-4 w3-margin-right w3-margin-top m4 l4 w3-border w3-round";
+                "dryer pure-u-md-1-3";
             workspaceContainer.appendChild(deviceContainer);
             let dryerWidget = new DryerWidget(
                 {
