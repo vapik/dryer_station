@@ -1,105 +1,140 @@
-.dryer
-{
+.dryer {
+
+    /*width: 510px;*/
+
+    padding: 0;
+
     cursor: pointer;
+
+    margin-bottom: 1em;
+    margin-right: 1em;
+
+    float: left;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: lightgrey;
+    border-radius: 8px;
+
+    /*position: relative;*/
+
+    /* Shadow */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.dryer:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .dryer-header,
+.dryer-footer {
+
+    width: 100%;
+
+    display: inline-block;
+    vertical-align: top;
+}
+
+.dryer-header
+{
+    border-radius: 8px 8px 0 0;
+}
+
 .dryer-footer
 {
-    padding-left: 8px;
-    padding-top: 4px;
+    border-radius: 0 0 8px 8px;
+}
+
+.dryer-header__name,
+.dryer-header-ts,
+.dryer-footer__mode{
+
+    padding-left: 0.8em;
+
 }
 
 .dryer-header_stopped,
-.dryer-footer_stopped
-{
+.dryer-footer_stopped {
     background-color: lightgrey;
-
-
 }
 
 .dryer-header_dew-point-mode,
 .dryer-header_time-mode,
 .dryer-footer_dew-point-mode,
-.dryer-footer_time-mode
-{
+.dryer-footer_time-mode {
     background-color: limegreen;
-    color: #fff;
+    /*color: #fff;*/
 }
 
 .dryer-header_step-mode,
 .dryer-header_hand-mode,
 .dryer-footer_step-mode,
-.dryer-footer_hand-mode
-{
+.dryer-footer_hand-mode {
     background-color: orange;
 }
 
-.dryer-content-tank_off
+.dryer-content
 {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+
+}
+
+.dryer-content-tank1,
+.dryer-content-tank2 {
+    /*max-width: 140px;*/
+    /*min-width: 140px;*/
+
+    width: 140px;
+
+    margin-left: 8px;
+    margin-right: 8px;
+
+    padding: 0;
+
+    background-color: transparent;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: lightgrey;
+    border-radius: 8px;
+
+}
+
+.dryer-content-tank_off {
     background-color: lightgrey;
 }
 
 .dryer-content-tank_switch,
-.dryer-content-tank_standby
-{
+.dryer-content-tank_standby {
     background-color: lightgrey;
 }
 
-.dryer-content-tank_adsorption
-{
+.dryer-content-tank_adsorption {
     background-color: lime;
 }
 
 .dryer-content-tank_pdown,
 .dryer-content-tank_pup,
 .dryer-content-tank_cool-fan,
-.dryer-content-tank_cool-air
-{
+.dryer-content-tank_cool-air {
     background-color: deepskyblue;
 }
 
 .dryer-content-tank_heat1,
-.dryer-content-tank_heat2
-{
+.dryer-content-tank_heat2 {
     background-color: orange;
 }
 
-.dryer-content-tank1,
-.dryer-content-tank2
-{
-    max-width: 140px;
-    min-width: 140px;
-
-}
-
-.dryer-content-sensors
-{
-    min-width: 180px;
-}
-
-.dryer-content-sensors-board
-{
-    list-style-type: none;
-    text-align: left;
-    margin: 4px;
-    padding-left: 5px;
-}
-
 .dryer-content-tank1-board,
-.dryer-content-tank2-board
-{
+.dryer-content-tank2-board {
+
     list-style-type: none;
-    margin: 0;
     padding: 0;
     text-align: center;
-}
 
-.dryer-content-sensors-board li
-{
-    padding: 0.8em 0;
-    background: #f7f7f7;
-    border-bottom: 1px solid #e7e7e7;
+    border-radius: 5px;
 }
 
 .dryer-content-tank1-board__name,
@@ -107,20 +142,55 @@
 .dryer-content-tank1-board__timer,
 .dryer-content-tank2-board__name,
 .dryer-content-tank2-board__state,
-.dryer-content-tank2-board__timer
-{
+.dryer-content-tank2-board__timer {
     padding: 0.8em 0;
     background: #f7f7f7;
     border-bottom: 1px solid #e7e7e7;
 }
 
-.dryer-header__timestamp
-{
+.dryer-header__timestamp {
     font-size: 1em;
     margin: 0.2em 0 0;
-    /*font-weight: 100;*/
-    /*font-size: 0.2em;*/
     padding-bottom: 2em;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.5);
+
 }
+
+.dryer-content-sensors {
+    min-width: 180px;
+
+    margin-left: 4px;
+    margin-right: 4px;
+
+    background-color: #f7f7f7;
+    border-width: 1px;
+    border-style: solid;
+    border-color: lightgrey;
+
+}
+
+.dryer-content-sensors-board {
+    list-style-type: none;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+
+}
+
+.dryer-content-sensors-board li {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    padding-left: 0.8em;
+
+    background: #f7f7f7;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.dryer-content-sensors-board__dew-point,
+.dryer-content-sensors-board__t-out,
+.dryer-content-sensors-board__t-after,
+.dryer-content-sensors-board__p-out
+{
+    color: #00bcd4;
+}
+
+

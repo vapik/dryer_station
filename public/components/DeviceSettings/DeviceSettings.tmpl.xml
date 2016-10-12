@@ -1,7 +1,7 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="data">
 <table class="setting-devices-table pure-table">
     <thead>
-    <tr>
+    <tr class="setting-device-table-header">
         <th>ID</th>
         <th>Нименование</th>
         <th>IP</th>
@@ -13,18 +13,18 @@
 
     <fest:for iterate="data" index="index" value="item">
 
-        <tr class="setting-devices-row" data-id="{item.id}">
-            <td class="setting-devices-table__id">
+        <tr class="setting-devices-table-row" data-id="{item.id}">
+            <td class="setting-devices-table-row__id">
                 <fest:value>item.id</fest:value></td>
-            <td class="setting-devices-table__name">
+            <td class="setting-devices-table-row__name">
                 <fest:value>item.name</fest:value></td>
-            <td class="setting-devices-table__ip">
+            <td class="setting-devices-table-row__ip">
                 <fest:value>item.ip</fest:value></td>
-            <td class="setting-devices-table__id-dev">
+            <td class="setting-devices-table-row__id-dev">
                 <fest:value>item.idDev</fest:value></td>
-            <td class="setting-devices-table__state">
+            <td class="setting-devices-table-row__state">
                 <fest:value>item.state</fest:value></td>
-            <td class="setting-devices-table__buttons w3-center">
+            <td class="setting-devices-table-row__buttons w3-center">
                 <button class="setting-devices-table-buttons__connect pure-button">Подключить</button><fest:space/>
                 <button class="setting-devices-table-buttons__edit pure-button">Изменить</button><fest:space/>
                 <button class="setting-devices-table-buttons__delete pure-button">Удалить</button><fest:space/>

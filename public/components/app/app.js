@@ -7,8 +7,8 @@
 
     /* SOCKET IO для обмена данных с сервером */
     //const URL = "http://109.111.177.150:34000";
-    //const URL = "http://127.0.0.1:34000";
-    const URL ="http://109.111.177.150:34000";
+    const URL = "http://127.0.0.1:34000";
+    //const URL ="http://109.111.177.150:34000";
 
     let socketIORepository = new SocketIORepository(
         {urlString: URL, deviceRepository: repository,});
@@ -43,8 +43,8 @@
         };
 
         workspaceContainer.innerHTML = `
-        <div class="setting-devices w3-container"></div>
-        <div class="add-device w3-container"></div> `;
+        <div class="setting-devices"></div>
+        <div class="add-device"></div> `;
 
         // Контейнер формы отображения настроек устройств
         let settingsDeviceContainer = document.body.querySelector('.setting-devices');
@@ -109,7 +109,7 @@
 
             let deviceContainer = document.createElement('div');
             deviceContainer.className =
-                "dryer pure-u-md-1-3";
+                "dryer";
             workspaceContainer.appendChild(deviceContainer);
             let dryerWidget = new DryerWidget(
                 {

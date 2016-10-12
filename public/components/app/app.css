@@ -1,14 +1,22 @@
-.main-nav
+.title
 {
-background-color: #808080;
-margin-bottom: 2.5em;
-white-space: nowrap;
-position: relative;
+    color: rgb(45, 62, 80);
+    padding-left: 0.8em;
 }
 
-.main-board
-{
+.main-nav {
+    background-color: rgb(45, 62, 80);
+
+    /*margin-bottom: 1em;*/
+    white-space: nowrap;
+    position: relative;
+
+    border-bottom-color: black;
+    border-radius: 0;
+}
+
+.main-board {
     display: table;
     width: auto;
-    padding: 8px;
+    padding: 1em;
 }
