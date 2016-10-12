@@ -1,3 +1,9 @@
+.main-menu-list__main,
+.main-menu-list__setting
+{
+    color: white;
+}
+
 .main-menu-list__main:hover,
 .main-menu-list__setting:hover
 {
@@ -5,8 +11,3 @@
     color: black;
 }
 
-.main-menu-list__main,
-.main-menu-list__setting
-{
-    color: white;
-}
