@@ -57,6 +57,8 @@
 .dryer-header_stopped,
 .dryer-footer_stopped {
     background-color: lightgrey;
+
+
 }
 
 .dryer-header_dew-point-mode,
@@ -64,7 +66,7 @@
 .dryer-footer_dew-point-mode,
 .dryer-footer_time-mode {
     background-color: limegreen;
-    /*color: #fff;*/
+    color: #fff;
 }
 
 .dryer-header_step-mode,
@@ -72,6 +74,7 @@
 .dryer-footer_step-mode,
 .dryer-footer_hand-mode {
     background-color: orange;
+    color: #fff;
 }
 
 .dryer-content

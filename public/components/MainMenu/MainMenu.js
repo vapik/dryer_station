@@ -67,7 +67,7 @@ class MainMenu {
         this._el.innerHTML = `
             <ul class="main-menu-list pure-menu-list">
                 <li class="pure-menu-item"><a class="main-menu-list__main">Главное окно</a></li>
-                <li class="pure-menu-item"><a class="main-menu-list__setting">Настройки</a></li>
+                <li class="pure-menu-item"><a class="main-menu-list__setting menu-selected">Настройки</a></li>
             </ul>`;
     }
 
