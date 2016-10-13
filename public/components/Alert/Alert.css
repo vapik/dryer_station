@@ -1,0 +1,51 @@
+.alert {
+
+    position: relative;
+
+    content: "";
+    display: table;
+    clear: both;
+
+    padding: 0.01em 16px;
+    margin-top: 16px !important;
+    margin-bottom: 16px !important;
+
+    border-radius: 4px !important;
+
+    color: #fff !important;
+
+}
+
+.alert_info {
+    background-color: #4CAF50 !important;
+}
+
+.alert_warning {
+    background-color: orange;
+}
+
+.alert_alarm {
+    background-color: red;
+}
+
+.alert__close-btn {
+    text-decoration: none;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    color: inherit;
+
+    -webkit-transition: background-color .3s, color .15s, box-shadow .3s, opacity 0.3s;
+    transition: background-color .3s, color .15s, box-shadow .3s, opacity 0.3s
+
+}
+
+.alert-closebtn:hover, .alert-closebtn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer
+}
+
+#container {
+    position: relative;
+}

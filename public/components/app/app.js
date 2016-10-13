@@ -15,8 +15,8 @@
 
 
     // test websocket
-    // const WS_URL = "ws://127.0.0.1:34000";
-    const WS_URL = "ws://109.111.177.150:34000";
+    const WS_URL = "ws://127.0.0.1:34000";
+    //const WS_URL = "ws://109.111.177.150:34000";
 
     let webSocketRepository = new WebSocketRepository(
      {urlString: WS_URL, deviceRepository: repository});
@@ -39,6 +39,39 @@
     mainMenuContainer.addEventListener('OpenSettingsWindow', (event) => {
         openSettingsWindow();
     });
+
+
+    let alertContainer = document.body.querySelector('.alert-board');
+
+    let div1 = document.createElement('div');
+    div1.classList.add('.alert');
+
+    let div2 = document.createElement('div');
+    div2.classList.add('.alert');
+
+
+    let alert1 = new Alert({
+        el: div1,
+        data: {
+            type: 3,
+            ts: (new Date).toLocaleDateString('ru'),
+            header: 'Бабах',
+            message: 'Убегай'
+        }
+    });
+
+    let alert2 = new Alert({
+        el: div2,
+        data: {
+            type: 1,
+            ts: (new Date).toLocaleDateString('ru'),
+            header: 'Все гуд',
+            message: 'ОК'
+        }
+    });
+
+    alertContainer.appendChild(div1);
+    alertContainer.appendChild(div2);
 
 
     function openSettingsWindow() {
