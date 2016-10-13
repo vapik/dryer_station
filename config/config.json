@@ -1,3 +1,4 @@
 {
-  "port" : 34000
+  "port_http" : 34000,
+  "port_https" : 34001
 }

@@ -7,11 +7,28 @@
 
     /* SOCKET IO для обмена данных с сервером */
     //const URL = "http://109.111.177.150:34000";
-    //const URL = "http://127.0.0.1:34000";
-    const URL ="https://109.111.177.150:34000";
+    const URL = "http://127.0.0.1:34000";
+    //const URL ="https://109.111.177.150:34000";
 
     let socketIORepository = new SocketIORepository(
         {urlString: URL, deviceRepository: repository,});
+
+
+    // test websocket
+    const WS_URL = "ws://127.0.0.1:34000";
+    var ws = new WebSocket(WS_URL);
+    ws.onopen = function()
+    {
+        ws.send('Hi')
+    };
+
+    ws.onerror = function(err)
+    {
+        console.log(err);
+    };
+    ws.onmessage = function (message) {
+        console.log(message.data);
+    };
 
 
     let mainMenuContainer = document.body.querySelector('.main-nav');

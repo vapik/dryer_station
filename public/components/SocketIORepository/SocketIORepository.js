@@ -21,7 +21,7 @@
         _init() {
             // Создаем сокет
             
-            this._socket = io.connect(this._urlString);
+            this._socket = io.connect(this._urlString, {secure: true});
 
             if (this._socket == null) throw new Error("Can't create socket");
 
