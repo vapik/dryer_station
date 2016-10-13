@@ -7,7 +7,7 @@
 
     /* SOCKET IO для обмена данных с сервером */
     //const URL = "http://109.111.177.150:34000";
-    const URL = "http://127.0.0.1:34000";
+    //const URL = "http://127.0.0.1:34000";
     //const URL ="https://109.111.177.150:34000";
 
     /*let socketIORepository = new WebSocketRepository(
@@ -15,7 +15,8 @@
 
 
     // test websocket
-    const WS_URL = "ws://127.0.0.1:34000";
+    // const WS_URL = "ws://127.0.0.1:34000";
+    const WS_URL = "ws://109.111.177.150:34000";
 
     let webSocketRepository = new WebSocketRepository(
      {urlString: WS_URL, deviceRepository: repository});
