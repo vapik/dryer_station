@@ -67,7 +67,7 @@
 
             let self = this;
 
-            let a = function(period = 2000){
+            this._timerPointer = function(period = 2000){
                 let timer = setInterval(func.bind(self), period);
 
                 function func() {
@@ -89,6 +89,8 @@
                         deviceWidgetList[i].render();
                     }
                 }
+
+                return timer;
 
             }();
 
