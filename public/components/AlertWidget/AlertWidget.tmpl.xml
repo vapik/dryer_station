@@ -1,0 +1,6 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="data">
+    <span class="alert__close-btn">&#x274C;</span>
+    <h3 class="alert__header"><fest:value>data.header</fest:value></h3>
+    <p class="alert__ts"><fest:value>data.ts</fest:value></p>
+    <p class="alert__message"><fest:value>data.message</fest:value></p>
+</fest:template>

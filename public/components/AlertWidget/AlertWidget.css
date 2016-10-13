@@ -1,16 +1,17 @@
 .alert {
 
-    position: relative;
+    min-width: 20em;
+    /*position: relative;*/
 
     content: "";
     display: table;
     clear: both;
 
-    padding: 0.01em 16px;
-    margin-top: 16px !important;
-    margin-bottom: 16px !important;
+    padding: 0.01em 1em;
+    margin-top: 0.4em !important;
+    /*margin-bottom: 1em !important;*/
 
-    border-radius: 4px !important;
+    border-radius: 6px !important;
 
     color: #fff !important;
 
@@ -40,10 +41,10 @@
 
 }
 
-.alert-closebtn:hover, .alert-closebtn:focus {
+.alert-close-btn:hover, .alert-close-btn:focus {
     color: #000;
     text-decoration: none;
-    cursor: pointer
+    cursor: pointer;
 }
 
 #container {

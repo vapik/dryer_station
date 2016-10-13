@@ -82,7 +82,7 @@ class TestRepository {
         let deviceDataList = [deviceData1, deviceData2, deviceData3, deviceData4];
 
 
-        // Generate device data
+        // Генерируем данные
         this.generateDeviceData(deviceData1);
         this.generateDeviceData(deviceData2);
         this.generateDeviceData(deviceData3);

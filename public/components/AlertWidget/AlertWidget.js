@@ -7,8 +7,6 @@
      * 2 - Желтый (Предупреждение)
      * 3 - Красный (Авария)
      * */
-
-
     const ALERT_TYPE =
     {
         INFO: 1,
@@ -16,14 +14,18 @@
         ALARM: 3
     };
 
-    class Alert {
+    // import
+    let _template = window.fest['AlertWidget/AlertWidget.tmpl'];
+
+
+
+    class AlertWidget {
 
         constructor(options) {
             this._el = options.el;
             this._data = options.data;
 
             this._initEvents();
-
             this.render();
 
         }
@@ -55,6 +57,8 @@
 
         render() {
 
+            this._el.classList.add("alert");
+            
             // Выбираем подстветку сообщения
             switch (this._data.type) {
                 case ALERT_TYPE.INFO:
@@ -71,15 +75,10 @@
             }
 
             // Генерируем внутренность
-            this._el.innerHTML = `
-                <span class="alert__close-btn">&times;</span>
-                <h3 class="alert__header">${this._data.header}</h3>
-                <p class="alert__ts">${this._data.ts}</p>
-                <p class="alert__message">${this._data.message}</p>
-        `;
+            this._el.innerHTML = _template(this._data);
         }
     }
 
-    window.Alert = Alert;
+    window.AlertWidget = AlertWidget;
 })();
 

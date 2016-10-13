@@ -20,3 +20,21 @@
     width: auto;
     padding: 1em;
 }
+
+.alert-board {
+
+    position: fixed;
+    bottom: 1em;
+    right: 50px;
+
+    z-index: 2;
+
+    -webkit-column-count: auto; /* Chrome, Safari, Opera */
+    -moz-column-count: auto; /* Firefox */
+    column-count: auto;
+
+    -webkit-column-gap: 4em; /* Chrome, Safari, Opera */
+    -moz-column-gap: 4em; /* Firefox */
+    column-gap: 4em;
+
+}

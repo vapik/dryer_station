@@ -22,7 +22,7 @@ let http = require('http');
 let https = require('https');
 
 // Сертификаты на https
-// TODO: ПОЛУЧИТЬ СЕРТИФИКАТ
+// TODO: Разобраться с сертификатом (этот не работает)
 const credentials = {
     pfx: fs.readFileSync('sslcert/server.pfx'),
     passphrase: 'learnJavaScriptRu'
@@ -77,7 +77,7 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 // Запускаем сервера
 httpServer.listen(PORT_HTTP, () => console.log(`HTTP server running on ${PORT_HTTP}`));
 
-// (на HTTPS пока нет сертификата)
+// (HTTPS сертификат получил, но он не рабочий)
 httpsServer.listen(PORT_HTTPS, () => console.log(`HTTPs server running on ${PORT_HTTPS}`));
 
 // Обмен данных по socket.io
@@ -86,5 +86,6 @@ httpsServer.listen(PORT_HTTPS, () => console.log(`HTTPs server running on ${PORT
 // Обмен данных по websocket
 let wss = new WebSocketServer({server: httpServer});
 
+// Генерирует тестовые данные 4х осушителей
 let TestRepository = require('./models/TestRepository').TestRepository;
 require("./middleware/websocket")(wss, TestRepository);
