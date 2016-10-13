@@ -2,7 +2,7 @@
 
     "use strict";
 
-    class SocketIORepository {
+    class WebSocketRepository {
         constructor(options) {
             this._urlString = options.urlString;
 
@@ -19,28 +19,45 @@
          * @private
          */
         _init() {
-            // Создаем сокет
-            
-            this._socket = io.connect(this._urlString, {secure: false});
+            // Создаем webSocket
+
+            this._socket = new WebSocket(this._urlString);
 
             if (this._socket == null) throw new Error("Can't create socket");
 
-            // Отправляем первый запрос
-            this._sendRequestToServer(this._socket, this._deviceRepository, 1000);
-
-            // Подписываемся на событие 'data', которое присылает данные с сервера
             let self = this;
-            this._socket.on('data', function (data) {
+            this._socket.onopen = function () {
+                console.log('WebSocket connection is opened');
 
-                self._deviceDataList = [];
-                for (let i = 0; i < data.length; i++) {
-                    self._deviceDataList.push(data[i]);
+                // Отправляем первый запрос
+                self._sendRequestToServer(self._socket, self._deviceRepository, 1000);
+
+            };
+
+            this._socket.onmessage = function (msg) {
+
+                let message;
+                try {
+                    message = JSON.parse(msg.data);
+                } catch (err) {
+                    console.log("Can't parse message");
+                    throw err;
                 }
 
-                // Отправляем запрос на сервер
-                self._sendRequestToServer(self._socket, self._deviceRepository, 3000);
+                if (message && message.name == 'data') {
 
-            })
+                    self._deviceDataList = [];
+                    for (let i = 0; i < message.data.length; i++) {
+                        self._deviceDataList.push(message.data[i]);
+                    }
+
+                    // Отправляем запрос на сервер
+                    self._sendRequestToServer(self._socket, self._deviceRepository, 3000);
+                }
+
+            };
+
+            this._socket.onclose = () => console.log("WebSocket connection closed");
 
         }
 
@@ -54,8 +71,13 @@
                 let devList = repository.getDeviceList();
                 console.log('Send request to server');
                 // В запрос попадут только те агрегаты, которые включены в опрос
-                socket.emit('requestDeviceData', devList.filter((item) => item.state));
-                
+                let pack = {
+                name: "request",
+                data: (devList.filter((item) => item.state))
+            };
+                let packJSON = JSON.stringify(pack);
+                socket.send(packJSON.toString());
+                console.log(packJSON)
             }, period);
         }
 
@@ -66,7 +88,6 @@
         getDataList() {
             return this._deviceDataList;
         }
-
 
 
         /**
@@ -87,6 +108,6 @@
     }
 
     // export
-    window.SocketIORepository = SocketIORepository;
+    window.WebSocketRepository = WebSocketRepository;
 
 })();

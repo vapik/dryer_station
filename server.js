@@ -11,8 +11,8 @@ let config = require('config');
 let express = require('express');
 let app = express();
 
-// EXPRESS Websocket
-let expressWs = require('express-ws')(app);
+// import websocket server
+let WebSocketServer = require('ws').Server;
 
 
 /* --------- HTTP/HTTPS ---------- */
@@ -33,8 +33,8 @@ let httpServer = http.createServer(app);
 let httpsServer = https.createServer(credentials, app);
 
 // Создаем socket IO над http
-let io = require('socket.io')(http);
-io.listen(httpServer);
+//let io = require('socket.io')(http);
+//io.listen(httpServer);
 
 
 // Ports
@@ -83,10 +83,8 @@ httpsServer.listen(PORT_HTTPS, () => console.log(`HTTPs server running on ${PORT
 // Обмен данных по socket.io
 //require("./middleware/socketIO")(io);
 
-// обмен по websocket
-app.ws('/', function(ws, req) {
-    ws.on('message', function(msg) {
-        console.log(msg);
-    });
-    console.log('socket', req);
-});
+// Обмен данных по websocket
+let wss = new WebSocketServer({server: httpServer});
+
+let TestRepository = require('./models/TestRepository').TestRepository;
+require("./middleware/websocket")(wss, TestRepository);

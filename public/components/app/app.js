@@ -10,25 +10,15 @@
     const URL = "http://127.0.0.1:34000";
     //const URL ="https://109.111.177.150:34000";
 
-    let socketIORepository = new SocketIORepository(
-        {urlString: URL, deviceRepository: repository,});
+    /*let socketIORepository = new WebSocketRepository(
+        {urlString: URL, deviceRepository: repository,});*/
 
 
     // test websocket
     const WS_URL = "ws://127.0.0.1:34000";
-    var ws = new WebSocket(WS_URL);
-    ws.onopen = function()
-    {
-        ws.send('Hi')
-    };
 
-    ws.onerror = function(err)
-    {
-        console.log(err);
-    };
-    ws.onmessage = function (message) {
-        console.log(message.data);
-    };
+    let webSocketRepository = new WebSocketRepository(
+     {urlString: WS_URL, deviceRepository: repository});
 
 
     let mainMenuContainer = document.body.querySelector('.main-nav');
@@ -145,13 +135,13 @@
             let timer = setInterval(func, period);
 
             function func() {
-                let dataList = socketIORepository.getDataList();
+                let dataList = webSocketRepository.getDataList();
 
                 for (let i = 0; i < devicesForMonitoring.length; i++) {
 
                     // Если данные по агрегату не пришли с сервера, 
                     // то устанавливаем ему дефолтное значение
-                    let data = socketIORepository.getData(devicesForMonitoring[i].id);
+                    let data = webSocketRepository.getData(devicesForMonitoring[i].id);
                     if (data == null) {
                         deviceWidgetList[i].data = deviceDataDefault;
                     }
