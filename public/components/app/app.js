@@ -14,8 +14,8 @@
 
 
     // WEBSOCKET
-    //const WS_URL = "ws://127.0.0.1:34000";
-    const WS_URL = "ws://109.111.177.150:34000";
+    const WS_URL = "ws://127.0.0.1:34000";
+    //const WS_URL = "ws://109.111.177.150:34000";
 
     let webSocketRepository = new WebSocketRepository(
      {urlString: WS_URL, deviceRepository: repository});

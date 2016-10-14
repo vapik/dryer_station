@@ -49,6 +49,8 @@
 
             let target = event.target;
 
+
+            // Нажата кнопка закрытия - она же является и подтверждением
             if (target.matches('.alert__close-btn')) {
                 this._el.style.display = 'none';
             }

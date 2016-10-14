@@ -13,7 +13,6 @@
             this._timerPointer = null;
         }
 
-
         /**
          * Генерирует главный экран
          */
@@ -67,6 +66,8 @@
 
             let self = this;
 
+
+            // Обновление данных
             this._timerPointer = function(period = 2000){
                 let timer = setInterval(func.bind(self), period);
 
@@ -112,8 +113,8 @@
             };
 
             this._el.innerHTML = `
-        <div class="setting-devices"></div>
-        <div class="add-device"></div>`;
+                <div class="setting-devices"></div>
+                <div class="add-device"></div>`;
 
             // Контейнер формы отображения настроек устройств
             let settingsDeviceContainer = document.body.querySelector('.setting-devices');
@@ -140,39 +141,6 @@
                 this._deviceRepository.create(event.detail);
                 settingsDevices.render();
             });
-        }
-
-
-        /**
-         * Обновляет данные агрегатов с периодичностью в period
-         * @param {Number} period
-         */
-        _refreshDeviceData(period = 2000) {
-
-            let timer = setInterval(func.bind(this), period);
-
-            function func() {
-                let dataList = this._deviceDataRepository.getDataList();
-
-                for (let i = 0; i < devicesForMonitoring.length; i++) {
-
-                    // Если данные по агрегату не пришли с сервера,
-                    // то устанавливаем ему дефолтное значение
-                    let data = this._deviceDataRepository.getData(devicesForMonitoring[i].id);
-                    if (data == null) {
-                        deviceWidgetList[i].data = deviceDataDefault;
-                    }
-                    else {
-                        data.name = devicesForMonitoring[i].name;
-                        deviceWidgetList[i].data = data;
-                    }
-
-                    deviceWidgetList[i].render();
-                }
-            }
-
-            return timer;
-
         }
 
 

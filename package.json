@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "hint": "jshint components/**/*.js",
-    "fest": "./node_modules/fest/fest-build --dir=components"
+    "fest": "./node_modules/fest/bin/fest-build --dir=components"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,6 @@
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
-    "express-ws": "^2.0.0",
     "jade": "^1.11.0",
     "morgan": "^1.7.0",
     "nconf": "^0.8.4",

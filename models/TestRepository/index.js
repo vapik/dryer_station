@@ -22,8 +22,6 @@ class TestRepository {
             errMask: 0,
             stateTank1: 2,
             stateTank2: 5
-
-
         };
 
 
@@ -37,7 +35,6 @@ class TestRepository {
             errMask: 0,
             stateTank1: 8,
             stateTank2: 2
-
         };
 
 
@@ -53,7 +50,6 @@ class TestRepository {
             timerTank1: 0,
             stateTank2: 6,
             timerTank2: 0
-
         };
 
 
