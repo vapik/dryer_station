@@ -1,0 +1,26 @@
+.valve4way__name {
+    font-size: 0.8em;
+    fill: black;
+    text-anchor: middle;
+}
+
+.valve4way__up,
+.valve4way__down,
+.valve4way__left,
+.valve4way__right {
+    fill: grey;
+    stroke:black;
+    stroke-width:1;
+}
+
+.valve4way_off {
+    fill:grey;
+}
+
+.valve4way_1-pos {
+    fill:lime;
+}
+
+.valve4way_2-pos {
+    fill:orange;
+}

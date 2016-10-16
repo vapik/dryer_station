@@ -1,0 +1,27 @@
+.heater__name {
+    font-size: 0.8em;
+    fill: black;
+    text-anchor: middle;
+}
+
+.heater__icon {
+
+    fill: gray;
+    stroke:black;
+    stroke-width:2;
+    fill-opacity:1;
+    stroke-opacity:1;
+}
+
+.heater_off {
+    fill: grey;
+}
+
+
+.heater_on {
+    fill: orange;
+}
+
+.heater_alarm {
+    fill: red;
+}

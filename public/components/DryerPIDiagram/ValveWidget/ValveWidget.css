@@ -1,0 +1,19 @@
+.valve__name {
+    font-size: 0.8em;
+    fill: black;
+    text-anchor: middle;
+}
+
+.valve__icon{
+    fill: grey;
+    stroke:black;
+    stroke-width:1;
+}
+
+.valve_closed {
+    fill:grey;
+}
+
+.valve_opened {
+    fill:lime;
+}

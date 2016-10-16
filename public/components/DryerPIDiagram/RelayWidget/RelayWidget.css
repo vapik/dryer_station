@@ -1,0 +1,23 @@
+.relay__name {
+    font-size: 0.8em;
+    fill: black;
+    text-anchor: middle;
+}
+
+.relay__icon {
+    fill: grey;
+    stroke:black;
+    stroke-width:1;
+}
+
+.relay_off {
+    fill: grey;
+}
+
+.relay_on {
+    fill: lime;
+}
+
+.relay_alarm {
+    fill: red;
+}

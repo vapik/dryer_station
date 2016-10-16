@@ -1,0 +1,22 @@
+.fan__name {
+    font-size: 0.8em;
+    fill: black;
+    text-anchor: middle;
+}
+
+.fan__icon {
+    stroke: black;
+    stroke-width: 2;
+}
+
+.fan_off {
+    fill: grey;
+}
+
+.fan_on {
+    fill: lime;
+}
+
+.fan_alarm {
+    fill: red;
+}

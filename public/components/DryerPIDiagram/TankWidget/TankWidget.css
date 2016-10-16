@@ -1,0 +1,48 @@
+.tank__rect
+{
+    fill:lightgrey;
+    stroke:black;
+    stroke-width:1;
+    opacity:1;
+}
+
+.tank__name,
+.tank__timer{
+    font-size: 0.9em;
+    fill: black;
+    text-anchor: middle;
+}
+
+.tank__state-line1,
+.tank__state-line2{
+    font-size: 0.8em;
+    fill: black;
+    text-anchor: middle;
+}
+
+.tank_stopped,
+.tank_standby,
+.tank_switch {
+    fill: lightgrey;
+}
+
+.tank_adsorption {
+    fill: lime;
+}
+
+.tank_stopped,
+.tank_heat1,
+.tank_heat2 {
+    fill: orange;
+}
+
+.tank_cool-fan,
+.tank_cool-air,
+.tank_pup,
+.tank_pdown {
+    fill: deepskyblue;
+}
+
+
+
+

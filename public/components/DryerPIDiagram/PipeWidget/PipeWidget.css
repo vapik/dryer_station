@@ -1,0 +1,22 @@
+.pipe,
+.pipe_off{
+    stroke:black;
+    stroke-width:1;
+    fill: transparent;
+}
+
+.pipe_adsorptions
+{
+    stroke-width: 8;
+    stroke: lightgreen;
+}
+
+.pipe_heat {
+    stroke-width: 8;
+    stroke: orange;
+}
+
+.pipe_cool{
+    stroke-width: 8;
+    stroke: deepskyblue;
+}
