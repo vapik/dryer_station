@@ -11,6 +11,7 @@
             this._deviceRepository = options.deviceRepository;
             this._deviceDataRepository = options.deviceDataRepository;
             this._timerPointer = null;
+            this._timerPointer2 = null;
 
             this._piDiagram = null;
         }
@@ -106,6 +107,7 @@
 
 
             if (this._timerPointer !== null) clearInterval(this._timerPointer);
+            if (this._timerPointer2 !== null) clearInterval(this._timerPointer2);
 
             let defaultOptions = {
                 id: 0,
@@ -148,19 +150,29 @@
 
         renderPI_Diagram() {
 
+            this._el.innerHTML = "";
+
             if (this._timerPointer !== null) clearInterval(this._timerPointer);
 
-            this._el.innerHTML = "";
             let drawingContainer = document.createElement('div');
             drawingContainer.id = "drawing";
             this._el.appendChild(drawingContainer);
 
-            if(this._piDiagram == null)
-            {
-                this._piDiagram = new PI_Diagram({el: this._el, data: {}})
-            } else {
-                this._piDiagram.render();
-            }
+            this._piDiagram = new PI_Diagram({el: this._el, data: {}})
+
+            let self = this;
+
+            // Обновление данных
+            this._timerPointer2 = function(period = 1000){
+                let timer = setInterval(func.bind(self), period);
+
+                function func() {
+                    this._piDiagram.render();
+                }
+
+                return timer;
+
+            }();
 
         }
 
