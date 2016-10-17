@@ -12,6 +12,9 @@
             // SVG box
             this._el = options.el;
 
+            // На поле стрелок создаем подэлемент
+            this._subSVG = this._el.nested();
+
             // options
             this._data = options.data;
 
@@ -20,18 +23,21 @@
 
         render() {
 
+            // Перед рендером очищаем подэлемент
+            this._subSVG.clear();
+
             // Name
-            let famName = this._el.text(this._data.name)
+            let famName = this._subSVG.text(this._data.name)
                 .move(50 + this._data.x, this._data.y)
                 .addClass('fan__name');
 
             // Circle
-            let fanIconCircle = this._el.circle(34)
+            let fanIconCircle = this._subSVG.circle(34)
                 .move(17 + this._data.x,17 + this._data.y)
                 .addClass('fan__icon');
 
             // Triangle
-            let fanIconTriangle = this._el.polygon('0,10 8,0 8,20')
+            let fanIconTriangle = this._subSVG.polygon('0,10 8,0 8,20')
                 .move(16 + this._data.x, 25 + this._data.y);
 
             // Set state

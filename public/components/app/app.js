@@ -36,7 +36,8 @@
 
 // Подписываемся на событие открытия главного окна
     mainMenuContainer.addEventListener('OpenMainWindow', (event) => {
-        workSpace.renderMainWindow();
+        // workSpace.renderMainWindow();
+        workSpace.renderPI_Diagram();
     });
 
 

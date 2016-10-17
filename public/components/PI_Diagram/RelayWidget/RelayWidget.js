@@ -12,6 +12,9 @@
             // SVG box
             this._el = options.el;
 
+            // На поле стрелок создаем подэлемент
+            this._subSVG = this._el.nested();
+
             // options
             this._data = options.data;
 
@@ -20,12 +23,15 @@
 
         render() {
 
+            // Перед рендером очищаем подэлемент
+            this._subSVG.clear();
+
             // Name
-            let relayName = this._el.text(this._data.name)
+            let relayName = this._subSVG.text(this._data.name)
                 .move(16 + this._data.x, this._data.y)
                 .addClass('relay__name');
 
-            let relayIconRect = this._el.rect(20, 20)
+            let relayIconRect = this._subSVG.rect(20, 20)
                 .move(5 + this._data.x, 20 + this._data.y)
                 .addClass('relay__icon');
             

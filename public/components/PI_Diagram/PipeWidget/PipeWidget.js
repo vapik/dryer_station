@@ -12,6 +12,9 @@
             // SVG box
             this._el = options.el;
 
+            // На поле стрелок создаем подэлемент
+            this._subSVG = this._el.nested();
+
             // options
             this._data = options.data;
 
@@ -20,8 +23,11 @@
 
         render() {
 
+            // Перед рендером очищаем подэлемент
+            this._subSVG.clear();
+
             // coords - массив координат точек вида [[x1,y1],[x2,y2]....]
-            let pipe = this._el.polyline(this._data.coords)
+            let pipe = this._subSVG.polyline(this._data.coords)
                 .addClass('pipe');
 
             pipe = pipe.addClass(this._getPipeStyle(this._data.state));

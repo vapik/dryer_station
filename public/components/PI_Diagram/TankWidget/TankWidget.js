@@ -12,6 +12,9 @@
             // SVG box
             this._el = options.el;
 
+            // На поле стрелок создаем подэлемент
+            this._subSVG = this._el.nested();
+
             // options
             this._data = options.data;
 
@@ -20,30 +23,32 @@
 
         render() {
 
+            // Перед рендером очищаем подэлемент
+            this._subSVG.clear();
 
             // Rectangle
-            let tankIconRect = this._el.rect(90, 135)
+            let tankIconRect = this._subSVG.rect(90, 135)
                 .radius(20)
                 .move(this._data.x, this._data.y)
                 .addClass('tank__rect');
 
             // Name
-            let tankName = this._el.text(this._data.name)
+            let tankName = this._subSVG.text(this._data.name)
                 .move(45 + this._data.x, 22 + this._data.y)
                 .addClass('tank__name');
 
             // State line 1
-            let stateStr1 = this._el.text(this._getTextOfState(this._data.state)[0] || "")
+            let stateStr1 = this._subSVG.text(this._getTextOfState(this._data.state)[0] || "")
                 .move(45 + this._data.x, 47 + this._data.y)
                 .addClass('tank__state-line1');
 
             // State line 2
-            let stateStr2 = this._el.text(this._getTextOfState(this._data.state)[1] || "")
+            let stateStr2 = this._subSVG.text(this._getTextOfState(this._data.state)[1] || "")
                 .move(45 + this._data.x, 67 + this._data.y)
                 .addClass('tank__state-line2');
 
             // Timer
-            let timer = this._el.text(this._data.timer)
+            let timer = this._subSVG.text(this._data.timer)
                 .move(45 + this._data.x, 97 + this._data.y)
                 .addClass('tank__timer');
 

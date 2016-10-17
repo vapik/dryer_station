@@ -10,7 +10,7 @@
           href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="PIDiagram.css">
+    <link rel="stylesheet" href="PI_Diagram.css">
     <link rel="stylesheet" href="FanWidget/FanWidget.css">
     <link rel="stylesheet" href="FourWayValve/FourWayValveWidget.css">
     <link rel="stylesheet" href="HeaterWidget/HeaterWidget.css">
@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="PipeWidget/PipeWidget.css">
     <link rel="stylesheet" href="ArrowWidget/ArrowWidget.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.3.5/svg.js"></script>
+    <script src="../../libs/js/svg/2.3.5/svg.js"></script>
     <script src="ValveWidget/ValveWidget.js"></script>
     <script src="RelayWidget/RelayWidget.js"></script>
     <script src="FanWidget/FanWidget.js"></script>
@@ -31,6 +31,7 @@
     <script src="SensorBarWidget/SensorBarWidget.js"></script>
     <script src="PipeWidget/PipeWidget.js"></script>
     <script src="ArrowWidget/ArrowWidget.js"></script>
+    <script src="PI_DiagramViewConfig.js"></script>
 
 
 
@@ -39,8 +40,23 @@
 
 
 <div id="drawing">
+
 </div>
-<script src="PIDiragram.js"></script>
+<button id="button">Refresh</button>
+<script src="PI_Diagram.js"></script>
+<script>
+
+    let container = document.body.querySelector("#drawing");
+    let pi = new PI_Diagram({el: container, data:{}});
+
+    let button = document.getElementById("button");
+    button.addEventListener('click', function(){
+        //container.innerHTML = "";
+        pi.render();
+    });
+
+
+</script>
 
 </body>
 </html>

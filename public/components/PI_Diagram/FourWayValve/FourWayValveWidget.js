@@ -12,6 +12,9 @@
             // SVG box
             this._el = options.el;
 
+            // На поле стрелок создаем подэлемент
+            this._subSVG = this._el.nested();
+
             // 0 - горизонтальный, 1 - вертикальный
             this._type = options.type;
 
@@ -23,28 +26,31 @@
 
         render() {
 
+            // Перед рендером очищаем подэлемент
+            this._subSVG.clear();
+
             // Имя
-            let valveName = this._el.text(this._data.name)
+            let valveName = this._subSVG.text(this._data.name)
                 .move(50 + this._data.x, this._data.y)
                 .addClass('valve4way__name');
 
             // Верхняя часть
-            let valveUp = this._el.polygon('0,10 16,10 8,26')
+            let valveUp = this._subSVG.polygon('0,10 16,10 8,26')
                 .move(8 + this._data.x, 10 + this._data.y)
                 .addClass('valve4way__up');
 
             // Нижняя часть
-            let valveDown = this._el.polygon('0,16 16,16 8,0')
+            let valveDown = this._subSVG.polygon('0,16 16,16 8,0')
                 .move(8 + this._data.x, 26 + this._data.y)
                 .addClass('valve4way__down');
 
             // Левая часть
-            let valveLeft = this._el.polygon('0,0 0,16 16,8')
+            let valveLeft = this._subSVG.polygon('0,0 0,16 16,8')
                 .move(this._data.x, 18 + this._data.y)
                 .addClass('valve4way__left');
 
             // Правая часть
-            let valveRight = this._el.polygon('16,8 16,24 0,16')
+            let valveRight = this._subSVG.polygon('16,8 16,24 0,16')
                 .move(16 + this._data.x, 18 + this._data.y)
                 .addClass('valve4way__right');
 

@@ -11,6 +11,8 @@
             this._deviceRepository = options.deviceRepository;
             this._deviceDataRepository = options.deviceDataRepository;
             this._timerPointer = null;
+
+            this._piDiagram = null;
         }
 
         /**
@@ -141,6 +143,25 @@
                 this._deviceRepository.create(event.detail);
                 settingsDevices.render();
             });
+        }
+
+
+        renderPI_Diagram() {
+
+            if (this._timerPointer !== null) clearInterval(this._timerPointer);
+
+            this._el.innerHTML = "";
+            let drawingContainer = document.createElement('div');
+            drawingContainer.id = "drawing";
+            this._el.appendChild(drawingContainer);
+
+            if(this._piDiagram == null)
+            {
+                this._piDiagram = new PI_Diagram({el: this._el, data: {}})
+            } else {
+                this._piDiagram.render();
+            }
+
         }
 
 
