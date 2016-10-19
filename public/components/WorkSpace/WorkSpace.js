@@ -10,7 +10,7 @@
             this._el = options.el;
             this._deviceRepository = options.deviceRepository;
             this._deviceDataRepository = options.deviceDataRepository;
-            this._timerPointer = null;
+            
             this._timerPointer2 = null;
 
             this._piDiagram = null;
@@ -21,7 +21,13 @@
          */
         renderMainWindow() {
 
+            // Удаляем из DOM старые элементы, чтобы сборбщик мусора их удалил
+            for (let i = 0; i < this._el.childNodes.length; i++) {
+                this._el.childNodes[i].remove();
+            }
+            
             this._el.innerHTML = "";
+
 
             // Для отображения по умолчанию
             let deviceDataDefault = {
@@ -66,38 +72,24 @@
                 deviceWidgetList.push(dryerWidget);
                 
             }
+           
+            for (let i = 0; i < devicesForMonitoring.length; i++) {
 
-            let self = this;
-
-
-            // Обновление данных
-            this._timerPointer = function(period = 2000){
-                let timer = setInterval(func.bind(self), period);
-
-                function func() {
-                    let dataList = this._deviceDataRepository.getDataList();
-
-                    for (let i = 0; i < devicesForMonitoring.length; i++) {
-
-                        // Если данные по агрегату не пришли с сервера,
-                        // то устанавливаем ему дефолтное значение
-                        let data = this._deviceDataRepository.getData(devicesForMonitoring[i].id);
-                        if (data == null) {
-                            deviceWidgetList[i].data = deviceDataDefault;
-                        }
-                        else {
-                            data.name = devicesForMonitoring[i].name;
-                            deviceWidgetList[i].data = data;
-                        }
-
-                        deviceWidgetList[i].render();
-                    }
+                // Если данные по агрегату не пришли с сервера,
+                // то устанавливаем ему дефолтное значение
+                let data = this._deviceDataRepository.getData(devicesForMonitoring[i].id);
+                if (data == null) {
+                    deviceWidgetList[i].data = deviceDataDefault;
+                }
+                else {
+                    data.name = devicesForMonitoring[i].name;
+                    deviceWidgetList[i].data = data;
                 }
 
-                return timer;
-
-            }();
-
+                deviceWidgetList[i].render();
+            }
+          
+    
         }
 
         /**
@@ -105,8 +97,11 @@
          */
         renderSettingsWindow() {
 
+            // Удаляем из DOM старые элементы, чтобы сборбщик мусора их удалил
+            for (let i = 0; i < this._el.childNodes.length; i++) {
+                this._el.childNodes[i].remove();
+            }
 
-            if (this._timerPointer !== null) clearInterval(this._timerPointer);
             if (this._timerPointer2 !== null) clearInterval(this._timerPointer2);
 
             let defaultOptions = {
@@ -150,15 +145,18 @@
 
         renderPI_Diagram() {
 
+            // Удаляем из DOM старые элементы, чтобы сборбщик мусора их удалил
+            for (let i = 0; i < this._el.childNodes.length; i++) {
+                this._el.childNodes[i].remove();
+            }
+            
             this._el.innerHTML = "";
-
-            if (this._timerPointer !== null) clearInterval(this._timerPointer);
 
             let drawingContainer = document.createElement('div');
             drawingContainer.id = "drawing";
             this._el.appendChild(drawingContainer);
 
-            this._piDiagram = new PI_Diagram({el: this._el, data: {}});
+            this._piDiagram = new PI_Diagram({el: this._el, data:  this._deviceDataRepository.getData(1)});
 
             let self = this;
 

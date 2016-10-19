@@ -34,9 +34,13 @@
 
     workSpace.renderSettingsWindow();
 
+    let tPointerMainWindow;
+    if (tPointerMainWindow !== null) clearInterval(tPointerMainWindow);
+
 // Подписываемся на событие открытия главного окна
     mainMenuContainer.addEventListener('OpenMainWindow', (event) => {
-         workSpace.renderMainWindow();
+        tPointerMainWindow = setInterval(function() {workSpace.renderMainWindow();}, 1000);
+
         //workSpace.renderPI_Diagram();
     });
 
@@ -44,7 +48,13 @@
    
 // Подписываеся на событие октрытия окна настроек
     mainMenuContainer.addEventListener('OpenSettingsWindow', (event) => {
+        if (tPointerMainWindow !== null) clearInterval(tPointerMainWindow);
         workSpace.renderSettingsWindow();
+    });
+
+    workspaceContainer.addEventListener('openDeviceDiagram', (event) => {
+        if (tPointerMainWindow !== null) clearInterval(tPointerMainWindow);
+        workSpace.renderPI_Diagram();
     });
 
 

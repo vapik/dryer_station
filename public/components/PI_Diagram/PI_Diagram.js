@@ -42,8 +42,10 @@
 
             // Создаем список колонн
             this._widgets.tankList = [];
-            PI_DiagramVieConfig.tankDataList.forEach(val =>
-                this._widgets.tankList.push(new TankWidget({el: this._mainSVG, data: val})));
+            PI_DiagramVieConfig.tankDataList.forEach(val => {
+                let _data = Object.assign({}, val);
+                Object.assign(_data, this._data);
+                this._widgets.tankList.push(new TankWidget({el: this._mainSVG, data: _data}))});
 
             // Создаем список нагнетателей
             this._widgets.fanList = [];

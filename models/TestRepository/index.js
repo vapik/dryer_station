@@ -4,32 +4,49 @@ let DevSimulator = require("../../libs/DevSimulator");
 "use strict";
 
 class TestRepository {
+    
+    constructor() {
 
+        this._dev1 = null;
+        this._dev2 = null;
+        this._dev3 = null;
+        this._init();
+    }
+    
+    _init() {
+        this._dev1 = new DevSimulator();
+        this._dev1.setMode(1);
+
+        this._dev2 = new DevSimulator();
+
+        let self = this;
+        setTimeout(()=> self._dev2.setMode(2), 10000);
+
+        this._dev3 = new DevSimulator();
+        setTimeout(()=> self._dev3.setMode(3), 20000);
+    }
+    
 
     /**
      * Выдает тестовый массив данных из 4х элементов
      * @returns {Object}
      */
-    static getDeviceDataList() {
+    getDeviceDataList() {
 
 
 // Создаем 4 тестовых агрегата, где 3 из них из симулятора
-        let dev1 = new DevSimulator();
-        dev1.setMode(1);
-        let dev1RTData = dev1.rtData;
+        
+        let dev1RTData = this._dev1.rtData;
 
-        let dev2 = new DevSimulator();
-        dev2.setMode(2);
-        let dev2RTData = dev2.rtData;
+        let dev2RTData = this._dev2.rtData;
 
-        let dev3 = new DevSimulator();
-        dev3.setMode(3);
-        let dev3RTData = dev3.rtData;
+        let dev3RTData = this._dev3.rtData;
 
 
 // Режим по точке росы, Нагрев 2 стадии
         let deviceData1 = {
             id: 1,
+            ts: Date.now(),
             err: false,
             message: "OK",
             mode: dev1RTData.mode,
@@ -41,6 +58,7 @@ class TestRepository {
 // Режим по времени, Ожидание
         let deviceData2 = {
             id: 2,
+            ts: Date.now(),
             err: false,
             message: "OK",
         };
@@ -51,8 +69,9 @@ class TestRepository {
 // Режим пошаговый, Охлаждение нагнетателем
         let deviceData3 = {
             id: 3,
+            ts: Date.now(),
             err: false,
-            message: "OK",
+            message: "OK"
         };
 
         Object.assign(deviceData3, dev3RTData);

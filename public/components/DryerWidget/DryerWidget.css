@@ -146,7 +146,7 @@
 .dryer-content-tank2-board__name,
 .dryer-content-tank2-board__state,
 .dryer-content-tank2-board__timer {
-    padding: 0.8em 0;
+    padding: 0.5em 0;
     background: #f7f7f7;
     border-bottom: 1px solid #e7e7e7;
 }
@@ -180,7 +180,7 @@
 }
 
 .dryer-content-sensors-board li {
-    padding-top: 0.8em;
+    padding-top: 0.5em;
     padding-bottom: 0.8em;
     padding-left: 0.8em;
 

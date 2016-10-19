@@ -19,6 +19,14 @@
 
         render() {
 
+            // Удаляем из DOM старые элементы, чтобы сборбщик мусора их удалил
+            for (let i = 0; i < this._el.childNodes.length; i++) {
+                this._el.childNodes[i].remove();
+            }
+
+            this._el.innerHTML = "";
+
+
             // Состояние колонны
             const STATE_TANK =
                 [
@@ -106,8 +114,8 @@
             item.timerTank2 = getFormattedTime(this._data.timerTank2);
 
 
-            function getFormattedTime(seconds) {
-                let date = new Date(seconds * 1000);
+            function getFormattedTime(ms) {
+                let date = new Date(ms);
                 return date.toLocaleString('ru',
                     {
                         hour: '2-digit',

@@ -17,7 +17,7 @@
     <div class="dryer-content pure-g-r">
 
         <fest:comment>Tank1</fest:comment>
-        <div class="dryer-content-tank1 {data.style.styleStateTank1}  pure-u-1-4">
+        <div class="dryer-content-tank1 {data.style.styleStateTank1} pure-u-1-4">
             <ul class="dryer-content-tank1-board">
                 <li class="dryer-content-tank1-board__name">
                     Колонна 1

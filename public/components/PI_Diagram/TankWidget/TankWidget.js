@@ -12,7 +12,7 @@
             // SVG box
             this._el = options.el;
 
-            // На поле стрелок создаем подэлемент
+            // На поле  создаем подэлемент
             this._subSVG = this._el.nested();
 
             // options
@@ -21,6 +21,14 @@
             this.render();
         }
 
+        /**
+         * Задает новый источник данных, переписывая старые
+         * @param {object} obj
+         */
+        setRTdata(obj) {
+            Object.assign(this._data, obj);
+        }        
+        
         render() {
 
             // Перед рендером очищаем подэлемент
@@ -62,7 +70,7 @@
         }
 
         /**
-         * Return text of tank's state
+         * Возвращает наименование стадии
          * @param {Number} state
          * @returns {Array}
          * @private
@@ -91,7 +99,7 @@
 
 
         /**
-         * Return string of tank's style
+         * Возвращает постфикс для CSS стиля стадии
          * @param {String} prefix
          * @param {Number} state
          * @returns {string}

@@ -52,7 +52,7 @@
                     }
 
                     // Отправляем запрос на сервер
-                    self._sendRequestToServer(self._socket, self._deviceRepository, 3000);
+                    self._sendRequestToServer(self._socket, self._deviceRepository, 1000);
                 }
 
             };

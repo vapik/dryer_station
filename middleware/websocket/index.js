@@ -7,8 +7,8 @@ module.exports = function (wss, repository) {
 
         //
         ws.on('message', function (msg) {
-            console.log(`${new Date().toLocaleDateString('ru')}: Got message`);
-            console.log(msg);
+            console.log(`${new Date().toLocaleTimeString('ru')}: Got message`);
+            //console.log(msg);
 
             // Парсим сообщение
 
@@ -53,10 +53,10 @@ module.exports = function (wss, repository) {
 
                 try {
                     ws.send(JSON.stringify(mes));
-                    console.log('Send message');
-                    console.log(mes);
+                    console.log(new Date().toLocaleTimeString('ru') +  ': Send message');
+                    // console.log(mes);
                 } catch (err) {
-                    console.log("Can't send data package");
+                    console.log(new Date().toLocaleTimeString('ru') +  "Can't send data package");
                 }
 
             }
