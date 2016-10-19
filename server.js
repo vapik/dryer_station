@@ -89,3 +89,17 @@ let wss = new WebSocketServer({server: httpServer});
 // Генерирует тестовые данные 4х осушителей
 let TestRepository = require('./models/TestRepository').TestRepository;
 require("./middleware/websocket")(wss, TestRepository);
+
+
+// Пробуем симулятор осушителя
+let DevSimulator = require('./libs/DevSimulator');
+let dev1 = new DevSimulator();
+dev1.setMode(1);
+
+setInterval(function() {
+    dev1.monitor();
+    //console.log(dev1.rtData);
+}, 1000);
+
+
+

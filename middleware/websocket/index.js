@@ -53,6 +53,8 @@ module.exports = function (wss, repository) {
 
                 try {
                     ws.send(JSON.stringify(mes));
+                    console.log('Send message');
+                    console.log(mes);
                 } catch (err) {
                     console.log("Can't send data package");
                 }

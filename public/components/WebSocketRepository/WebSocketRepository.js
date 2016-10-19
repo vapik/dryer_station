@@ -77,7 +77,7 @@
             };
                 let packJSON = JSON.stringify(pack);
                 socket.send(packJSON.toString());
-                console.log(packJSON)
+                console.log(packJSON);
             }, period);
         }
 

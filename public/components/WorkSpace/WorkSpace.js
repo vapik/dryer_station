@@ -30,8 +30,8 @@
                 err: true,
                 message: "Нет данных",
                 mode: 0,
-                inError: false,
-                errMask: 0,
+                errors: 0,
+                warnings: 0,
                 stateTank1: 0,
                 timerTank1: 0,
                 stateTank2: 0,
@@ -39,9 +39,9 @@
                 dewPoint: 0,
                 tOut: 0,
                 tAfter: 0,
+                tHeater: 0,
                 pOut: 0,
-                heater: false,
-                fan: false
+                units: [false, false, false, false, false, false, false, false]
             };
 
             // Массив объектов для отображения, сюда попадут те, у которых state = true
@@ -158,7 +158,7 @@
             drawingContainer.id = "drawing";
             this._el.appendChild(drawingContainer);
 
-            this._piDiagram = new PI_Diagram({el: this._el, data: {}})
+            this._piDiagram = new PI_Diagram({el: this._el, data: {}});
 
             let self = this;
 

@@ -120,8 +120,8 @@
             item.tOut = this._data.tOut;
             item.tAfter = this._data.tAfter;
             item.pOut = this._data.pOut;
-            item.heater = this._data.heater ? "ВКЛ" : "ОТКЛ";
-            item.fan = this._data.fan ? "ВКЛ" : "ОТКЛ";
+            item.heater = this._data.units[7] ? "ВКЛ" : "ОТКЛ";
+            item.fan = this._data.units[6] ? "ВКЛ" : "ОТКЛ";
 
             let style =
             {

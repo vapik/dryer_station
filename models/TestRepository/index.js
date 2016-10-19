@@ -1,3 +1,6 @@
+// Симулятор осушителя
+let DevSimulator = require("../../libs/DevSimulator");
+
 "use strict";
 
 class TestRepository {
@@ -10,19 +13,29 @@ class TestRepository {
     static getDeviceDataList() {
 
 
-// Создаем 4 тестовых агрегата
+// Создаем 4 тестовых агрегата, где 3 из них из симулятора
+        let dev1 = new DevSimulator();
+        dev1.setMode(1);
+        let dev1RTData = dev1.rtData;
+
+        let dev2 = new DevSimulator();
+        dev2.setMode(2);
+        let dev2RTData = dev2.rtData;
+
+        let dev3 = new DevSimulator();
+        dev3.setMode(3);
+        let dev3RTData = dev3.rtData;
+
 
 // Режим по точке росы, Нагрев 2 стадии
         let deviceData1 = {
             id: 1,
             err: false,
             message: "OK",
-            mode: 2,
-            inError: false,
-            errMask: 0,
-            stateTank1: 2,
-            stateTank2: 5
+            mode: dev1RTData.mode,
         };
+
+        Object.assign(deviceData1, dev1RTData);
 
 
 // Режим по времени, Ожидание
@@ -30,12 +43,9 @@ class TestRepository {
             id: 2,
             err: false,
             message: "OK",
-            mode: 1,
-            inError: false,
-            errMask: 0,
-            stateTank1: 8,
-            stateTank2: 2
         };
+
+        Object.assign(deviceData2, dev2RTData);
 
 
 // Режим пошаговый, Охлаждение нагнетателем
@@ -43,14 +53,9 @@ class TestRepository {
             id: 3,
             err: false,
             message: "OK",
-            mode: 3,
-            inError: false,
-            errMask: 0,
-            stateTank1: 2,
-            timerTank1: 0,
-            stateTank2: 6,
-            timerTank2: 0
         };
+
+        Object.assign(deviceData3, dev3RTData);
 
 
 // Связь с устройством отсутствует
@@ -60,8 +65,8 @@ class TestRepository {
             err: true,
             message: "No connection",
             mode: 0,
-            inError: false,
-            errMask: 0,
+            errors: 0,
+            warnings: 0,
             stateTank1: 0,
             timerTank1: 0,
             stateTank2: 0,
@@ -69,56 +74,17 @@ class TestRepository {
             dewPoint: 0,
             tOut: 0,
             tAfter: 0,
+            tHeater: 0,
             pOut: 0,
-            heater: false,
-            fan: false
+            units: [false, false, false, false, false, false, false, false]
         };
 
-// Пул устройств
+        // Пул устройств
         let deviceDataList = [deviceData1, deviceData2, deviceData3, deviceData4];
-
-
-        // Генерируем данные
-        this.generateDeviceData(deviceData1);
-        this.generateDeviceData(deviceData2);
-        this.generateDeviceData(deviceData3);
 
         return deviceDataList;
     }
 
-    /**
-     * Подмешивает значения датчиков в объект deviceData для тестов
-     * @param {Object} deviceData
-     */
-    static generateDeviceData(deviceData) {
-        let date = new Date();
-
-        deviceData.ts = Date.now();
-        deviceData.timerTank1 = date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds();
-        deviceData.timerTank2 = date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds();
-        deviceData.dewPoint = (-5 + Math.random());
-        deviceData.tOut = ~~(10 + 10 * Math.random());
-        deviceData.tAfter = ~~(80 + 10 * Math.random());
-        deviceData.pOut = ~~(16 + 100 * Math.random());
-
-        if (deviceData.stateTank1 == 5 || deviceData.stateTank2 == 5) {
-            deviceData.heater = true;
-        } else {
-            deviceData.heater = false;
-        }
-
-
-        if (deviceData.stateTank1 == 6 ||
-            deviceData.stateTank1 == 7 ||
-            deviceData.stateTank2 == 6 ||
-            deviceData.stateTank2 == 7) {
-            deviceData.fan = true;
-        } else {
-            deviceData.fan = false;
-        }
-
-
-    };
 
 }
 
