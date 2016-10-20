@@ -9,7 +9,7 @@
     //const URL = "http://109.111.177.150:34000";
     //const URL = "http://127.0.0.1:34000";
 
-    /*let socketIORepository = new WebSocketRepository(
+    /*let socketIORepository = new SocketIORepository(
         {urlString: URL, deviceRepository: repository,});*/
 
 
@@ -35,10 +35,16 @@
     workSpace.renderSettingsWindow();
 
     let tPointerMainWindow;
-    if (tPointerMainWindow !== null) clearInterval(tPointerMainWindow);
+    let tPointerPIdiagram;
+
+    stopTimers(tPointerMainWindow, tPointerPIdiagram);
+
+
 
 // Подписываемся на событие открытия главного окна
     mainMenuContainer.addEventListener('OpenMainWindow', (event) => {
+
+        stopTimers(tPointerMainWindow, tPointerPIdiagram);
         tPointerMainWindow = setInterval(function() {workSpace.renderMainWindow();}, 1000);
 
         //workSpace.renderPI_Diagram();
@@ -48,14 +54,23 @@
    
 // Подписываеся на событие октрытия окна настроек
     mainMenuContainer.addEventListener('OpenSettingsWindow', (event) => {
-        if (tPointerMainWindow !== null) clearInterval(tPointerMainWindow);
+        stopTimers(tPointerMainWindow, tPointerPIdiagram);
         workSpace.renderSettingsWindow();
     });
 
     workspaceContainer.addEventListener('openDeviceDiagram', (event) => {
-        if (tPointerMainWindow !== null) clearInterval(tPointerMainWindow);
-        workSpace.renderPI_Diagram();
+        stopTimers(tPointerMainWindow, tPointerPIdiagram);stopTimers(tPointerMainWindow, tPointerPIdiagram);
+        tPointerPIdiagram = setInterval(() => workSpace.renderPI_Diagram(), 1000);
     });
+
+
+    function stopTimers(){
+        [].forEach.call(arguments, (item) => {
+            if (item == null) return;
+            clearInterval(item);
+        });
+    }
+
 
 
     /* ------------- ALERT -------------------  */
@@ -81,3 +96,4 @@
     }
 
 })();
+

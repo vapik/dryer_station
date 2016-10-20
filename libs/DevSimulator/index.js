@@ -64,15 +64,16 @@ class DevSimulator {
         this._tsStartAds = Date.now(); //
 
         // Клапана
-        this._tank1ads = true;
-        this._BK1 = false;
-        this._BK2 = false;
-        this._BK3 = false;
-        this._BK4 = false;
-        this._BK5 = false;
+        this._tank1ads = 1;
+        this._BK1 = 0;
+        this._BK2 = 0;
+        this._BK3 = 0;
+        this._BK4 = 0;
+        this._BK5 = 0;
 
-        this._fan = false;
-        this._heater = false;
+        this._fan = 0;
+        this._heater = 0;
+        this._pRelay = 0;
 
         // Аналоговые датчики
         this._dewPoint = -20;
@@ -175,6 +176,7 @@ class DevSimulator {
 
             // pOut = P_MAX ... P_MIN
             this._pOut = Math.round(P_MAX + (P_MIN - P_MAX) * this._timerReg / (1000 * this._parameters.timers.PDOWN));
+            this._pOut = (this._pOut < 0) ? 0 : this._pOut;
         } else if (this._state === STATE.PUP) {
 
             let P_MIN = this._parameters.setpoints.P_DOWN;
@@ -182,6 +184,7 @@ class DevSimulator {
 
             // pOut  = P_MIN ... P_MAX
             this._pOut = Math.round(P_MIN + (P_MAX - P_MIN) * this._timerReg / (1000 * this._parameters.timers.PUP));
+            this._pOut = (this._pOut < 0) ? 0 : this._pOut;
 
         }
 
@@ -192,118 +195,127 @@ class DevSimulator {
         switch(this._state) {
             case STATE.STOPPED:
 
-                this._BK1 = false;
-                this._BK2 = false;
-                this._BK3 = false;
-                this._BK4 = false;
-                this._BK5 = false;
+                this._BK1 = 0;
+                this._BK2 = 0;
+                this._BK3 = 0;
+                this._BK4 = 0;
+                this._BK5 = 0;
 
-                this._heater = false;
-                this._fan = false;
+                this._heater = 0;
+                this._fan = 0;
+                this._pRelay = 0;
 
                 break;
 
             case STATE.SWITCH:
 
-                this._BK1 = false;
-                this._BK2 = false;
-                this._BK3 = false;
-                this._BK4 = false;
-                this._BK5 = false;
+                this._BK1 = 0;
+                this._BK2 = 0;
+                this._BK3 = 0;
+                this._BK4 = 0;
+                this._BK5 = 0;
 
-                this._heater = false;
-                this._fan = false;
+                this._heater = 0;
+                this._fan = 0;
+                this._pRelay = 0;
 
                 break;
 
             case STATE.PDOWN:
 
-                this._BK1 = false;
-                this._BK2 = true;
-                this._BK3 = false;
-                this._BK4 = false;
-                this._BK5 = false;
+                this._BK1 = 0;
+                this._BK2 = 1;
+                this._BK3 = 0;
+                this._BK4 = 0;
+                this._BK5 = 0;
 
-                this._heater = false;
-                this._fan = false;
+                this._heater = 0;
+                this._fan = 0;
+                this._pRelay = 0;
 
                 break;
 
             case STATE.HEAT1:
 
-                this._BK1 = true;
-                this._BK2 = false;
-                this._BK3 = false;
-                this._BK4 = false;
-                this._BK5 = true;
+                this._BK1 = 1;
+                this._BK2 = 0;
+                this._BK3 = 0;
+                this._BK4 = 0;
+                this._BK5 = 1;
 
-                this._heater = false;
-                this._fan = true;
+                this._heater = 0;
+                this._fan = 1;
+                this._pRelay = 1;
 
                 break;
 
             case STATE.HEAT2:
 
-                this._BK1 = true;
-                this._BK2 = false;
-                this._BK3 = false;
-                this._BK4 = false;
-                this._BK5 = true;
+                this._BK1 = 1;
+                this._BK2 = 0;
+                this._BK3 = 0;
+                this._BK4 = 0;
+                this._BK5 = 1;
 
-                this._heater = true;
-                this._fan = true;
+                this._heater = 1;
+                this._fan = 1;
+                this._pRelay = 1;
 
                 break;
 
             case STATE.COOLFAN:
 
-                this._BK1 = true;
-                this._BK2 = false;
-                this._BK3 = false;
-                this._BK4 = false;
-                this._BK5 = true;
+                this._BK1 = 1;
+                this._BK2 = 0;
+                this._BK3 = 0;
+                this._BK4 = 0;
+                this._BK5 = 1;
 
-                this._heater = false;
-                this._fan = true;
+                this._heater = 0;
+                this._fan = 1;
+                this._pRelay = 1;
 
                 break;
 
             case STATE.COOLAIR:
 
-                this._BK1 = true;
-                this._BK2 = false;
-                this._BK3 = true;
-                this._BK4 = false;
-                this._BK5 = false;
+                this._BK1 = 1;
+                this._BK2 = 0;
+                this._BK3 = 1;
+                this._BK4 = 0;
+                this._BK5 = 0;
 
-                this._heater = false;
-                this._fan = false;
+                this._heater = 0;
+                this._fan = 0;
+                this._pRelay = 1;
 
                 break;
 
             case STATE.STANDBY:
 
-                this._BK1 = true;
-                this._BK2 = false;
-                this._BK3 = false;
-                this._BK4 = false;
-                this._BK5 = false;
+                this._BK1 = 1;
+                this._BK2 = 0;
+                this._BK3 = 0;
+                this._BK4 = 0;
+                this._BK5 = 0;
 
-                this._heater = false;
-                this._fan = false;
+                this._heater = 0;
+                this._fan = 0;
+                this._pRelay = 0;
 
                 break;
 
             case STATE.PUP:
 
-                this._BK1 = false;
-                this._BK2 = false;
-                this._BK3 = false;
-                this._BK4 = true;
-                this._BK5 = false;
+                this._BK1 = 0;
+                this._BK2 = 0;
+                this._BK3 = 0;
+                this._BK4 = 1;
+                this._BK5 = 0;
 
-                this._heater = false;
-                this._fan = false;
+                this._heater = 0;
+                this._fan = 0;
+                this._pRelay = 1;
 
                 break;
         }
@@ -333,7 +345,7 @@ class DevSimulator {
             tAfter: this._tAfter,
             tHeater: this._tHeater,
             pOut: this._pOut,
-            units: [this._tank1ads, this._BK1, this._BK2, this._BK3, this._BK4, this._BK5, this._fan, this._heater]
+            units: [this._tank1ads, this._BK1, this._BK2, this._BK3, this._BK4, this._BK5, this._fan, this._heater, this._pRelay]
         }
     }
 

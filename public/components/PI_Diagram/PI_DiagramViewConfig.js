@@ -37,23 +37,23 @@
 
     PI_DiagramViewConfig.pipeDataList
         .add({
-        state: 1,
+        state: 0,
         coords: [[30, 30], [200, 30], [200, 70]]
     })
         .add({
-            state: 2,
+            state: 0,
             coords: [[187, 85], [55, 85], [55, 125]]
         })
         .add({
-            state: 1,
+            state: 0,
             coords: [[217, 85], [318, 85], [318, 125]]
         })
         .add({
-            state: 2,
+            state: 0,
             coords: [[200, 90], [200, 170]]
         })
         .add({
-            state: 2,
+            state: 0,
             coords: [[200, 200], [200, 260]]
         })
         .add({
@@ -65,27 +65,27 @@
             coords: [[127, 200], [127, 230], [200, 230], [200, 260]]
         })
         .add({
-            state: 2,
+            state: 0,
             coords: [[55, 255], [55, 371], [185, 371]]
         })
         .add({
-            state: 1,
+            state: 0,
             coords: [[318, 255], [318, 330], [200, 330], [200, 360]]
         })
         .add({
-            state: 1,
+            state: 0,
             coords: [[218, 370], [390, 370], [390, 195], [785, 195]]
         })
         .add({
-            state: 2,
+            state: 0,
             coords: [[200, 388], [200, 421], [497, 421]]
         })
         .add({
-            state: 2,
+            state: 0,
             coords: [[535, 421], [680, 421]]
         })
         .add({
-            state: 2,
+            state: 0,
             coords: [[710, 421], [790, 421]]
         })
         .add({
@@ -124,7 +124,7 @@
             name: "BK4", type: 1, x: 630, y: 240, state: false
         })
         .add({
-            name: "BK5", tupe: 0, x: 680, y: 368, state: true
+            name: "BK5", type: 0, x: 680, y: 368, state: true
         });
 
 // 4х ходовые клапана
@@ -158,7 +158,7 @@
 // Нагнетатели
     PI_DiagramViewConfig.fanDataList
         .add({
-            name: "H1", x: 660, y: 385, state: 1
+            name: "H1", x: 720, y: 385, state: 1
     });
 
 // Нагреватели

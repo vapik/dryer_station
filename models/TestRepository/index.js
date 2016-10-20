@@ -95,7 +95,7 @@ class TestRepository {
             tAfter: 0,
             tHeater: 0,
             pOut: 0,
-            units: [false, false, false, false, false, false, false, false]
+            units: [0,0,0,0,0,0,0,0,0]
         };
 
         // Пул устройств

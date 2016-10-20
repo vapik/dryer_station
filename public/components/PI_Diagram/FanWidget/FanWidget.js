@@ -15,7 +15,7 @@
             // На поле стрелок создаем подэлемент
             this._subSVG = this._el.nested();
 
-            // options
+            // Опции
             this._data = options.data;
 
             this.render();
@@ -40,7 +40,7 @@
             let fanIconTriangle = this._subSVG.polygon('0,10 8,0 8,20')
                 .move(16 + this._data.x, 25 + this._data.y);
 
-            // Set state
+            // Задаем класс состояния нагнетателя
             switch (this._data.state) {
                 case 0:
                     fanIconCircle = fanIconCircle.addClass('fan_off');

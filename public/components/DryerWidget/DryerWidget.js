@@ -116,12 +116,7 @@
 
             function getFormattedTime(ms) {
                 let date = new Date(ms);
-                return date.toLocaleString('ru',
-                    {
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        second: '2-digit'
-                    });
+                return date.toLocaleTimeString('ru', {timeZone: 'UTC'});
             }
 
             item.dewPoint = this._data.dewPoint.toFixed(1);

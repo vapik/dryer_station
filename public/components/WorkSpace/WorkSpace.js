@@ -47,7 +47,7 @@
                 tAfter: 0,
                 tHeater: 0,
                 pOut: 0,
-                units: [false, false, false, false, false, false, false, false]
+                units: [false, false, false, false, false, false, false, false, false]
             };
 
             // Массив объектов для отображения, сюда попадут те, у которых state = true
@@ -157,20 +157,6 @@
             this._el.appendChild(drawingContainer);
 
             this._piDiagram = new PI_Diagram({el: this._el, data:  this._deviceDataRepository.getData(1)});
-
-            let self = this;
-
-            // Обновление данных
-            this._timerPointer2 = function(period = 1000){
-                let timer = setInterval(func.bind(self), period);
-
-                function func() {
-                    this._piDiagram.render();
-                }
-
-                return timer;
-
-            }();
 
         }
 
