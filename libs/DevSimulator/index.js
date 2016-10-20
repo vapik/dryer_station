@@ -334,6 +334,7 @@ class DevSimulator {
             mode: this._mode,
             errors: this._err,
             warnings: this._warning,
+            state: this._state,
             stateTank1: this._tank1ads ? STATE.ADS : this._state,
             stateTank2: this._tank1ads ? this._state : STATE.ADS,
             timerTank1: this._tank1ads ? this._timerAds : this._timerReg,

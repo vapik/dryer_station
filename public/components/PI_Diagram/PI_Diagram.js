@@ -1,6 +1,20 @@
 (function () {
     "use strict";
 
+    // Enum состояний
+    const STATE = {
+        STOPPED: 0,
+        SWITCH: 1,
+        ADS: 2,
+        PDOWN: 3,
+        HEAT1: 4,
+        HEAT2: 5,
+        COOLFAN: 6,
+        COOLAIR: 7,
+        STANDBY: 8,
+        PUP: 9
+    };
+
     class PI_Diagram {
         constructor(options) {
             this._el = options.el;
@@ -23,9 +37,7 @@
 
 
             // Создаем список труб
-            this._widgets.pipeList = [];
-            PI_DiagramVieConfig.pipeDataList.forEach(val =>
-                this._widgets.pipeList.push(new PipeWidget({el: this._mainSVG, data: val})));
+            this._definePipeStates();
 
             // Создаем список клапанов
             this._widgets.valveList = [];
@@ -128,6 +140,137 @@
                 this._widgets.sensorList.push(new SensorBarWidget({el: this._mainSVG, data: _data}))});
 
         }
+
+        // Задает трубам состояние
+        _definePipeStates(){
+            this._widgets.pipeList = [];
+
+            for(let entry of PI_DiagramVieConfig.pipeDataList) {
+
+                let _data = Object.assign({},entry[1]);
+                switch(entry[0])
+                {
+                    case "in-4way1":
+                    case "4way2-out":
+                        _data.state = 1;
+                        break;
+
+                    case "4way1-tank1":
+                    case "tank1-4way2":
+                        if (this._data.units[0]) {
+                            _data.state = 1
+                        } else {
+                            switch(this._data.stateTank1) {
+                                case STATE.STOPPED:
+                                case STATE.SWITCH:
+                                    _data.state = 0;
+                                    break;
+                                case STATE.HEAT1:
+                                case STATE.HEAT2:
+                                    _data.state = 2;
+                                    break;
+                                default:
+                                    _data.state = 3;
+                                    break;
+                            }
+                        }
+                        break;
+
+                    case "4way1-tank2":
+                    case "tank2-4way2":
+                        if (!this._data.units[0]) {
+                            _data.state = 1
+                        } else {
+                            switch(this._data.stateTank2) {
+                                case STATE.STOPPED:
+                                case STATE.SWITCH:
+                                    _data.state = 0;
+                                    break;
+                                case STATE.HEAT1:
+                                case STATE.HEAT2:
+                                    _data.state = 2;
+                                    break;
+                                default:
+                                    _data.state = 3;
+                                    break;
+                            }
+                        }
+                        break;
+
+                    case "4way1-BK2":
+                    case "BK2-out":
+                        _data.state = (this._data.state === STATE.PDOWN) ? 3 : 0;
+                        break;
+
+                    case "4way1-BK1":
+                    case "BK1-out":
+                        switch(this._data.state) {
+                            case STATE.STOPPED:
+                            case STATE.SWITCH:
+                            case STATE.PUP:
+                                _data.state = 0;
+                                break;
+                            case STATE.HEAT1:
+                            case STATE.HEAT2:
+                                _data.state = 2;
+                                break;
+                            default:
+                                _data.state = 3;
+                                break;
+                        }
+                        break;
+
+                    case "4way2-heater":
+                    case "pRelay":
+                        switch(this._data.state) {
+                            case STATE.STOPPED:
+                            case STATE.SWITCH:
+                            case STATE.PDOWN:
+                            case STATE.STANDBY:
+                                _data.state = 0;
+                                break;
+                            case STATE.HEAT1:
+                            case STATE.HEAT2:
+                                _data.state = 2;
+                                break;
+                            default:
+                                _data.state = 3;
+                                break;
+                        }
+
+                        break;
+
+                    case "heater-BK5":
+                    case "BK5-in":
+                        switch(this._data.state) {
+                            case STATE.HEAT1:
+                            case STATE.HEAT2:
+                                _data.state = 2;
+                                break;
+                            case STATE.COOLFAN:
+                                _data.state = 3;
+                                break;
+                            default:
+                                _data.state = 0;
+                                break;
+                        }
+                        break;
+
+                    case "out-BK3":
+                    case "BK3-heater":
+                        _data.state = (this._data.state === STATE.COOLAIR) ? 3 : 0;
+                        break;
+
+                    case "out-BK4":
+                    case "BK4-heater":
+                        _data.state = (this._data.state === STATE.PUP) ? 3 : 0;
+                        break;
+
+                }
+                this._widgets.pipeList.push(new PipeWidget({el: this._mainSVG, data: _data}))
+            }
+        }
+
 
     }
 

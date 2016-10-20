@@ -39,28 +39,25 @@
 
     stopTimers(tPointerMainWindow, tPointerPIdiagram);
 
-
-
 // Подписываемся на событие открытия главного окна
     mainMenuContainer.addEventListener('OpenMainWindow', (event) => {
 
         stopTimers(tPointerMainWindow, tPointerPIdiagram);
         tPointerMainWindow = setInterval(function() {workSpace.renderMainWindow();}, 1000);
 
-        //workSpace.renderPI_Diagram();
     });
 
-
-   
 // Подписываеся на событие октрытия окна настроек
     mainMenuContainer.addEventListener('OpenSettingsWindow', (event) => {
         stopTimers(tPointerMainWindow, tPointerPIdiagram);
         workSpace.renderSettingsWindow();
     });
 
-    workspaceContainer.addEventListener('openDeviceDiagram', (event) => {
-        stopTimers(tPointerMainWindow, tPointerPIdiagram);stopTimers(tPointerMainWindow, tPointerPIdiagram);
-        tPointerPIdiagram = setInterval(() => workSpace.renderPI_Diagram(), 1000);
+    workspaceContainer.addEventListener('OpenDeviceDiagram', (event) => {
+        stopTimers(tPointerMainWindow, tPointerPIdiagram);
+        let _id = event.detail;
+
+        tPointerPIdiagram = setInterval(() => workSpace.renderPI_Diagram(_id), 1000);
     });
 
 

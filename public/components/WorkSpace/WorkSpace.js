@@ -2,7 +2,7 @@
     "use strict";
 
     /**
-     * Класс содержит методы для рендера главного экрана или экрана настроек,
+     * Класс содержит методы для рендера главного экрана, экрана настроек, мнемосхем осушителей
      * в дальнейшем будет расшираться
      */
     class WorkSpace {
@@ -143,7 +143,10 @@
         }
 
 
-        renderPI_Diagram() {
+        /**
+         * Генерирует мнемосхему осушителя
+         */
+        renderPI_Diagram(id = 1) {
 
             // Удаляем из DOM старые элементы, чтобы сборбщик мусора их удалил
             for (let i = 0; i < this._el.childNodes.length; i++) {
@@ -156,7 +159,7 @@
             drawingContainer.id = "drawing";
             this._el.appendChild(drawingContainer);
 
-            this._piDiagram = new PI_Diagram({el: this._el, data:  this._deviceDataRepository.getData(1)});
+            this._piDiagram = new PI_Diagram({el: this._el, data:  this._deviceDataRepository.getData(id)});
 
         }
 

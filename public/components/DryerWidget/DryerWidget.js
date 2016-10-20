@@ -145,7 +145,7 @@
         _onClick(event) {
             event.preventDefault();
 
-            let openDevicePIDiagram = new CustomEvent("openDeviceDiagram",
+            let openDevicePIDiagram = new CustomEvent("OpenDeviceDiagram",
                 {
                     bubbles: true,
                     detail: this._data.id

@@ -84,6 +84,7 @@ class TestRepository {
             err: true,
             message: "No connection",
             mode: 0,
+            state: 0,
             errors: 0,
             warnings: 0,
             stateTank1: 0,

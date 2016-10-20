@@ -4,7 +4,7 @@
 
     let PI_DiagramViewConfig = {
         arrowDataList: new Set(),
-        pipeDataList: new Set(),
+        pipeDataList: new Map(),
         valveDataList: new Set(),
         valve4wayDataList: new Set(),
         tankDataList: new Set(),
@@ -35,78 +35,79 @@
 
 // Трубы
 
+    let i = 1;
     PI_DiagramViewConfig.pipeDataList
-        .add({
+        .set("in-4way1",{ // in-4way
         state: 0,
         coords: [[30, 30], [200, 30], [200, 70]]
     })
-        .add({
+        .set("4way1-tank1",{ // 4way - tank 1
             state: 0,
             coords: [[187, 85], [55, 85], [55, 125]]
         })
-        .add({
+        .set("4way1-tank2",{ // 4way - tank2
             state: 0,
             coords: [[217, 85], [318, 85], [318, 125]]
         })
-        .add({
+        .set("4way1-BK2",{ // 4way - BK2
             state: 0,
-            coords: [[200, 90], [200, 170]]
+            coords: [[200, 93], [200, 170]]
         })
-        .add({
+        .set("BK2-out",{ // BK2 - out
             state: 0,
             coords: [[200, 200], [200, 260]]
         })
-        .add({
+        .set("4way1-BK1",{
             state: 0,
-            coords: [[200, 90], [200, 130], [127, 130], [127, 170]]
+            coords: [[200, 93], [200, 130], [127, 130], [127, 170]]
         })
-        .add({
+        .set("BK1-out",{
             state: 0,
             coords: [[127, 200], [127, 230], [200, 230], [200, 260]]
         })
-        .add({
+        .set("tank1-4way2",{
             state: 0,
             coords: [[55, 255], [55, 371], [185, 371]]
         })
-        .add({
+        .set("tank2-4way2",{
             state: 0,
             coords: [[318, 255], [318, 330], [200, 330], [200, 360]]
         })
-        .add({
+        .set("4way2-out",{
             state: 0,
             coords: [[218, 370], [390, 370], [390, 195], [785, 195]]
         })
-        .add({
+        .set("4way2-heater",{
             state: 0,
             coords: [[200, 388], [200, 421], [497, 421]]
         })
-        .add({
+        .set("heater-BK5",{
             state: 0,
             coords: [[535, 421], [680, 421]]
         })
-        .add({
+        .set("BK5-in",{
             state: 0,
             coords: [[710, 421], [790, 421]]
         })
-        .add({
+        .set("out-BK3",{
             state: 0,
-            coords: [[567, 195], [567, 240]]
+            coords: [[567, 197], [567, 240]]
         })
-        .add({
+        .set("BK3-heater",{
             state: 0,
             coords: [[567, 273], [567, 421], [535, 421]]
         })
-        .add({
+        .set("out-BK4",{
             state: 0,
-            coords: [[638, 195], [638, 240]]
+            coords: [[638, 197], [638, 240]]
         })
-        .add({
+        .set("BK4-heater",{
             state: 0,
             coords: [[638, 273], [638, 421], [535, 421]]
         })
-        .add({
+        .set("pRelay",{
             state: 0,
-            coords: [[470, 421], [470, 486], [558, 486], [558, 421]]
+            coords: [[470, 422], [470, 486], [558, 486], [558, 422]]
         });
 
 // Клапана
