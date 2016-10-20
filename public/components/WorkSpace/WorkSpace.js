@@ -144,22 +144,62 @@
 
 
         /**
-         * Генерирует мнемосхему осушителя
+         * Генерирует мнемосхему осушителя по заданному id
+         * @param {number} id
          */
         renderPI_Diagram(id = 1) {
 
-            // Удаляем из DOM старые элементы, чтобы сборбщик мусора их удалил
-            for (let i = 0; i < this._el.childNodes.length; i++) {
-                this._el.childNodes[i].remove();
-            }
+            // TODO: Выделить модальное окно в отдельный компонент
+
+
+            // // Удаляем из DOM старые элементы, чтобы сборбщик мусора их удалил
+            // for (let i = 0; i < this._el.childNodes.length; i++) {
+            //     this._el.childNodes[i].remove();
+            // }
             
-            this._el.innerHTML = "";
+            //this._el.innerHTML = "";
+
+
+            // Подложка под модальным окном
+            let modalContainer = document.body.querySelector('.modal-board');
+            if (modalContainer !== null) {
+                for (let i = 0; i < modalContainer.childNodes.length; i++) {
+                    modalContainer.childNodes[i].remove();
+                }
+                modalContainer.innerHTML = "";
+            } else {
+                modalContainer = document.createElement('div');
+                modalContainer.classList.add('modal-board');
+                document.body.appendChild(modalContainer);
+            }
+
+            // Модальное окно
+            let modalContent = document.createElement('div');
+            modalContent.classList.add('modal-content');
+            modalContainer.appendChild(modalContent);
+
+            // Header
+            let header = document.createElement('div');
+            header.classList.add('modal-content-header');
+            header.innerHTML = "Осушитель";
+            modalContent.appendChild(header);
+
+            // Close Btn
+            let closeBtn = document.createElement('span');
+            closeBtn.classList.add('modal-content-header__close-btn');
+            closeBtn.innerHTML = "&#x274C;";
+            closeBtn.addEventListener("click", (event) =>{
+                modalContainer.parentNode.removeChild(modalContainer);
+            });
+            header.appendChild(closeBtn);
 
             let drawingContainer = document.createElement('div');
             drawingContainer.id = "drawing";
-            this._el.appendChild(drawingContainer);
+            modalContent.appendChild(drawingContainer);
 
-            this._piDiagram = new PI_Diagram({el: this._el, data:  this._deviceDataRepository.getData(id)});
+
+
+            this._piDiagram = new PI_Diagram({el: drawingContainer, data:  this._deviceDataRepository.getData(id)});
 
         }
 

@@ -32,12 +32,15 @@
         deviceRepository: repository,
             deviceDataRepository: webSocketRepository});
 
-    workSpace.renderSettingsWindow();
+
 
     let tPointerMainWindow;
     let tPointerPIdiagram;
 
     stopTimers(tPointerMainWindow, tPointerPIdiagram);
+    tPointerMainWindow = setInterval(function() {workSpace.renderMainWindow();}, 1000);
+
+
 
 // Подписываемся на событие открытия главного окна
     mainMenuContainer.addEventListener('OpenMainWindow', (event) => {
@@ -53,6 +56,7 @@
         workSpace.renderSettingsWindow();
     });
 
+    // Подписываемся на собите открытия окна мнемосхемы
     workspaceContainer.addEventListener('OpenDeviceDiagram', (event) => {
         stopTimers(tPointerMainWindow, tPointerPIdiagram);
         let _id = event.detail;
@@ -61,6 +65,9 @@
     });
 
 
+    /**
+     * Принимает указатели на таймеры и останавливает их
+     */
     function stopTimers(){
         [].forEach.call(arguments, (item) => {
             if (item == null) return;
@@ -68,9 +75,9 @@
         });
     }
 
+/*
 
-
-    /* ------------- ALERT -------------------  */
+    /!* ------------- ALERT -------------------  *!/
     
     let alertContainer = document.body.querySelector('.alert-board');
     
@@ -91,6 +98,7 @@
 
         alertContainer.appendChild(div);
     }
+*/
 
 })();
 
