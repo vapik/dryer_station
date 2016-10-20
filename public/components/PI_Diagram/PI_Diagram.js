@@ -44,7 +44,14 @@
             this._widgets.tankList = [];
             PI_DiagramVieConfig.tankDataList.forEach(val => {
                 let _data = Object.assign({}, val);
-                Object.assign(_data, this._data);
+                if (_data.name === "КОЛОННА 1") {
+                    _data.state = this._data.stateTank1;
+                    _data.timer = new Date(this._data.timerTank1).toLocaleTimeString('ru');
+                } else if (_data.name === "КОЛОННА 2") {
+                    _data.state = this._data.stateTank2;
+                    _data.timer = new Date(this._data.timerTank2).toLocaleTimeString('ru');
+                }
+
                 this._widgets.tankList.push(new TankWidget({el: this._mainSVG, data: _data}))});
 
             // Создаем список нагнетателей
