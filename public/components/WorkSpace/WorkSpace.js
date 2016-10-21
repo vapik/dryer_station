@@ -10,7 +10,7 @@
             this._el = options.el;
             this._deviceRepository = options.deviceRepository;
             this._deviceDataRepository = options.deviceDataRepository;
-            
+
             this._timerPointer2 = null;
 
             this._piDiagram = null;
@@ -25,7 +25,7 @@
             for (let i = 0; i < this._el.childNodes.length; i++) {
                 this._el.childNodes[i].remove();
             }
-            
+
             this._el.innerHTML = "";
 
 
@@ -70,9 +70,9 @@
                     }
                 );
                 deviceWidgetList.push(dryerWidget);
-                
+
             }
-           
+
             for (let i = 0; i < devicesForMonitoring.length; i++) {
 
                 // Если данные по агрегату не пришли с сервера,
@@ -88,8 +88,8 @@
 
                 deviceWidgetList[i].render();
             }
-          
-    
+
+
         }
 
         /**
@@ -152,14 +152,6 @@
             // TODO: Выделить модальное окно в отдельный компонент
 
 
-            // // Удаляем из DOM старые элементы, чтобы сборбщик мусора их удалил
-            // for (let i = 0; i < this._el.childNodes.length; i++) {
-            //     this._el.childNodes[i].remove();
-            // }
-            
-            //this._el.innerHTML = "";
-
-
             // Подложка под модальным окном
             let modalContainer = document.body.querySelector('.modal-board');
             if (modalContainer !== null) {
@@ -188,7 +180,7 @@
             let closeBtn = document.createElement('span');
             closeBtn.classList.add('modal-content-header__close-btn');
             closeBtn.innerHTML = "&#x274C;";
-            closeBtn.addEventListener("click", (event) =>{
+            closeBtn.addEventListener("click", (event) => {
                 modalContainer.parentNode.removeChild(modalContainer);
             });
             header.appendChild(closeBtn);
@@ -198,9 +190,30 @@
             modalContent.appendChild(drawingContainer);
 
 
+            this._piDiagram = new PI_Diagram({el: drawingContainer, data: this._deviceDataRepository.getData(id)});
 
-            this._piDiagram = new PI_Diagram({el: drawingContainer, data:  this._deviceDataRepository.getData(id)});
+        }
 
+        renderModalWindow(id = 1) {
+
+            let modalContainer = document.body.querySelector('.modal-board');
+            if (modalContainer !== null) {
+                for (let i = 0; i < modalContainer.childNodes.length; i++) {
+                    modalContainer.childNodes[i].remove();
+                }
+                modalContainer.innerHTML = "";
+            } else {
+                modalContainer = document.createElement('div');
+                modalContainer.classList.add('modal-board');
+                document.body.appendChild(modalContainer);
+            }
+
+            let modalWindow = new DeviceModalWindow({
+                el: modalContainer,
+                deviceDataRepository: this._deviceDataRepository,
+                deviceRepository: this._deviceRepository,
+                id: id
+            });
         }
 
 

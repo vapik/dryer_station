@@ -90,6 +90,7 @@
                 this._widgets.tankList.push(new TankWidget({el: this._mainSVG, data: _data}))});
 
             // Создаем список нагнетателей
+
             this._widgets.fanList = [];
             PI_DiagramVieConfig.fanDataList.forEach(val => {
                 let _data = Object.assign({}, val);

@@ -46,7 +46,7 @@
     mainMenuContainer.addEventListener('OpenMainWindow', (event) => {
 
         stopTimers(tPointerMainWindow, tPointerPIdiagram);
-        tPointerMainWindow = setInterval(function() {workSpace.renderMainWindow();}, 1000);
+        tPointerMainWindow = setInterval(function() {workSpace.renderMainWindow();}, 500);
 
     });
 
@@ -61,8 +61,21 @@
         stopTimers(tPointerMainWindow, tPointerPIdiagram);
         let _id = event.detail;
 
-        tPointerPIdiagram = setInterval(() => workSpace.renderPI_Diagram(_id), 1000);
+        workSpace.renderModalWindow(_id);
+
+        // tPointerPIdiagram = setInterval(() => workSpace.renderPI_Diagram(_id), 500);
     });
+
+    document.body.addEventListener('CloseModalWindow', (event) => {
+
+        event.target.parentNode.removeChild(event.target);
+        if (event.detail !== null) clearInterval(event.detail);
+
+        stopTimers(tPointerMainWindow, tPointerPIdiagram);
+        tPointerMainWindow = setInterval(function() {workSpace.renderMainWindow();}, 500);
+
+    });
+
 
 
     /**
