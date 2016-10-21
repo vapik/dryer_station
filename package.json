@@ -4,6 +4,7 @@
   "description": "Learn project for learn.javascript.ru",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "hint": "jshint components/**/*.js",
     "fest": "./node_modules/fest/bin/fest-build --dir=components"
