@@ -1,11 +1,10 @@
 "use strict";
 
-
 let path = require('path');
 let fs = require('fs');
 
 // Файлы конфигурации
-let config = require('config');
+let config = require('./config');
 
 // EXPRESS
 let express = require('express');
