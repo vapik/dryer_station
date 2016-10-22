@@ -11,7 +11,7 @@ let config = require('config');
 let express = require('express');
 let app = express();
 
-// import websocket server
+// websocket server
 let WebSocketServer = require('ws').Server;
 
 
@@ -24,7 +24,7 @@ let https = require('https');
 // Сертификаты на https
 // TODO: Разобраться с сертификатом (этот не работает)
 const credentials = {
-    pfx: fs.readFileSync('sslcert/server.pfx'),
+    pfx: fs.readFileSync(path.join.(__dirname,'/sslcert','server.pfx')),
     passphrase: 'learnJavaScriptRu'
 
 };
@@ -90,17 +90,6 @@ let wss = new WebSocketServer({server: httpServer});
 let TestRepository = require('./models/TestRepository').TestRepository;
 let testRepository = new TestRepository();
 require("./middleware/websocket")(wss, testRepository);
-
-
-/*// Пробуем симулятор осушителя
-let DevSimulator = require('./libs/DevSimulator');
-let dev1 = new DevSimulator();
-dev1.setMode(1);
-
-setInterval(function() {
-    dev1.monitor();
-    //console.log(dev1.rtData);
-}, 1000);*/
 
 
 
