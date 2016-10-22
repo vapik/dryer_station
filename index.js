@@ -23,7 +23,7 @@ let https = require('https');
 // Сертификаты на https
 // TODO: Разобраться с сертификатом (этот не работает)
 const credentials = {
-    pfx: fs.readFileSync('./sslcert/server.pfx'),
+    pfx: fs.readFileSync(path.join(__dirname,'/sslcert','server.pfx')),
     passphrase: 'learnJavaScriptRu'
 
 };
