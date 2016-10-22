@@ -42,8 +42,8 @@ let PORT_HTTP = config.get('port_http') || 34000;
 let PORT_HTTPS = config.get('port_https') || 34001;
 */
 
-let PORT_HTTP = process.env.port || 3000;
-let PORT_HTTPS = process.env.port || 3001;
+let PORT_HTTP = process.env.PORT || 3000;
+let PORT_HTTPS = process.env.PORT || 3001;
 
 
 // Логгирование
@@ -82,7 +82,7 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 httpServer.listen(PORT_HTTP, () => console.log(`HTTP server running on ${PORT_HTTP}`));
 
 // (HTTPS сертификат получил, но он не рабочий)
-httpsServer.listen(PORT_HTTPS, () => console.log(`HTTPs server running on ${PORT_HTTPS}`));
+//httpsServer.listen(PORT_HTTPS, () => console.log(`HTTPs server running on ${PORT_HTTPS}`));
 
 // Обмен данных по socket.io
 //require("./middleware/socketIO")(io);
