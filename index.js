@@ -18,7 +18,9 @@ let WebSocketServer = require('ws').Server;
 
 // Импорт серверов
 let http = require('http');
-let https = require('https');
+
+// На Heroku https поднимать не надо
+// let https = require('https');
 
 // Сертификаты на https
 // TODO: Разобраться с сертификатом (этот не работает)
@@ -29,7 +31,7 @@ const credentials = {
 };
 
 let httpServer = http.createServer(app);
-let httpsServer = https.createServer(credentials, app);
+// let httpsServer = https.createServer(credentials, app);
 
 // Создаем socket IO над http
 //let io = require('socket.io')(http);
@@ -37,14 +39,8 @@ let httpsServer = https.createServer(credentials, app);
 
 
 // Ports
-/*
-let PORT_HTTP = config.get('port_http') || 34000;
-let PORT_HTTPS = config.get('port_https') || 34001;
-*/
 
 let PORT_HTTP = process.env.PORT || 3000;
-let PORT_HTTPS = process.env.PORT || 3001;
-
 
 // Логгирование
 let logger = require('morgan');
@@ -81,9 +77,6 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 // Запускаем сервера
 httpServer.listen(PORT_HTTP, () => console.log(`HTTP server running on ${PORT_HTTP}`));
 
-// (HTTPS сертификат получил, но он не рабочий)
-//httpsServer.listen(PORT_HTTPS, () => console.log(`HTTPs server running on ${PORT_HTTPS}`));
-
 // Обмен данных по socket.io
 //require("./middleware/socketIO")(io);
 
@@ -94,17 +87,4 @@ let wss = new WebSocketServer({server: httpServer});
 let TestRepository = require('./models/TestRepository').TestRepository;
 let testRepository = new TestRepository();
 require("./middleware/websocket")(wss, testRepository);
-
-
-/*// Пробуем симулятор осушителя
-let DevSimulator = require('./libs/DevSimulator');
-let dev1 = new DevSimulator();
-dev1.setMode(1);
-
-setInterval(function() {
-    dev1.monitor();
-    //console.log(dev1.rtData);
-}, 1000);*/
-
-
 
