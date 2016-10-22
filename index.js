@@ -37,8 +37,13 @@ let httpsServer = https.createServer(credentials, app);
 
 
 // Ports
+/*
 let PORT_HTTP = config.get('port_http') || 34000;
 let PORT_HTTPS = config.get('port_https') || 34001;
+*/
+
+let PORT_HTTP = process.env.port || config.get('port_http') || 34000;
+let PORT_HTTPS = process.env.port || config.get('port_https') || 34001;
 
 
 // Логгирование
